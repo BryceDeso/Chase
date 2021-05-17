@@ -9,6 +9,10 @@ public class EnemyVisionBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject _target;
 
+    [Tooltip("Enemy's max vision distance")]
+    [SerializeField]
+    private float _maxVisionDistance;
+
     private NavMeshAgent _agent;
 
     public GameObject Target
@@ -29,7 +33,7 @@ public class EnemyVisionBehaviour : MonoBehaviour
         //the raycast hit
         RaycastHit hit;
         // If the ray intersects an obect stop the enemy
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _maxVisionDistance, layerMask))
         {
             //changes the ray to yellow if it hits the player
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
