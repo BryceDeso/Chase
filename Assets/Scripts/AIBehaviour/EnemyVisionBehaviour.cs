@@ -25,10 +25,7 @@ public class EnemyVisionBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         // Bit shift the index of the layer (8) to get a bit mask
-        int layerMask = 1 << 8;
-
-        // This would cast rays only against colliders in layer 8.
-        layerMask = ~layerMask;
+        LayerMask layerMask = LayerMask.GetMask("Player");
 
         RaycastHit hit;
         // If the ray intersects an obect stop the enemy
