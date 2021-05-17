@@ -28,10 +28,4 @@ public class InputDelegateBehavior : MonoBehaviour
     {
         _playerControls.Gun.Shoot.performed += context => _bulletEmitter.Shoot();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

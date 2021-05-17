@@ -156,7 +156,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 748911180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b15aa00b9e71e47ba5d7f17d2d7541, type: 3}
+  m_Script: {fileID: 11500000, guid: dda88da067e504643973ebe68aa9007d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletEmitter: {fileID: 1580110967}
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 242121924763808705, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
+  _bullet: {fileID: 852227319270815148, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
   _bulletSpeed: 50
 --- !u!4 &1580110968
 Transform:
