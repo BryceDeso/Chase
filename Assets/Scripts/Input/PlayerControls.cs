@@ -52,6 +52,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""UseTeleporter"",
+                    ""type"": ""Button"",
+                    ""id"": ""9235cda0-dc7d-4eeb-bed9-7a2b4a00a0d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -65,28 +73,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""8433741e-eaee-4cea-8577-5d8630646b6c"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""c98396bb-6294-486d-9f77-4d0a2c10f8ad"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -109,6 +95,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99cbe3d8-fad8-4e9e-ad3b-7973e904b170"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseTeleporter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -121,6 +118,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_UseTeleporter = m_Player.FindAction("UseTeleporter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,11 +202,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_UseTeleporter;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @UseTeleporter => m_Wrapper.m_Player_UseTeleporter;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -221,6 +221,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @UseTeleporter.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTeleporter;
+                @UseTeleporter.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTeleporter;
+                @UseTeleporter.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTeleporter;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +231,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @UseTeleporter.started += instance.OnUseTeleporter;
+                @UseTeleporter.performed += instance.OnUseTeleporter;
+                @UseTeleporter.canceled += instance.OnUseTeleporter;
             }
         }
     }
@@ -239,5 +245,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnUseTeleporter(InputAction.CallbackContext context);
     }
 }
