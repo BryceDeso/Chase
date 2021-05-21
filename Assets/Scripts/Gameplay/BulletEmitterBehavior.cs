@@ -16,7 +16,9 @@ public class BulletEmitterBehavior : MonoBehaviour
     private bool canShoot = true;
 
     /// <summary>
-    /// Creates an instance of the bullet and applies a force thats multiplied by _bulletSpeed
+    /// Creates an instance of the bullet and applies a force thats multiplied by _bulletSpeed, once the player has shot, 
+    /// canShoot is set to false and a timer is set using Invoke and after a certain amount of time the 
+    /// funtion canShoot is invoked and sets canShoot to true enabling the player to shoot again.
     /// </summary>
     public void Shoot()
     {
