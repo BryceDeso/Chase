@@ -8,7 +8,7 @@ public class EnemyMovementBehvaiour : MonoBehaviour
     [SerializeField]
     public Transform[] Points;
     //indecator for the current point that the enemy is on
-    int Current;
+    int current;
     //speed of the Enemy
     public float MovementSpeed;
     //speed of the enemy's rotation
@@ -22,25 +22,27 @@ public class EnemyMovementBehvaiour : MonoBehaviour
     void Start()
     {
         //initalizes the point the enemy starts at
-        Current = 0;
+        current = 0;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Current = (Current + 1) % Points.Length;
+        if (!other.gameObject.CompareTag("Patrol Point"))
+            return;
+        current = (current + 1) % Points.Length;
     }
 
     // Update is called once per frame
     void Update()
     {
         //if the position of the enemy does not equal the position of it's current point continue moving to the current point's transform
-        if(transform.position != Points[Current].position)
+        if(transform.position != Points[current].position)
         {
            
             //sets the enemy's transform to move towards the transform of the current point
-            transform.position = Vector3.MoveTowards(transform.position, Points[Current].position, MovementSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, Points[current].position, MovementSpeed * Time.deltaTime);
             //looks at the point it's moving towards
-            _direction = (Points[Current].position - transform.position).normalized;
+            _direction = (Points[current].position - transform.position).normalized;
             _lookRotation = Quaternion.LookRotation(_direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
         }

@@ -12,7 +12,11 @@ public class EnemyVisionBehaviour : MonoBehaviour
     [SerializeField]
     private float _maxVisionDistance;
 
-    private UnityEngine.AI.NavMeshAgent _agent;
+    [Tooltip("Enemy's max angle")]
+    [SerializeField]
+    private float _maxVisionAngle;
+
+    private float resetMovementSpeed;
 
     public GameObject Target
     {
@@ -25,23 +29,24 @@ public class EnemyVisionBehaviour : MonoBehaviour
             _target = value;
         }
     }
-    void FixedUpdate()
+    private void Start()
     {
-        // Bit shift the index of the player layer
-        LayerMask layerMask = LayerMask.GetMask("Player");
-        //the raycast hit
-        RaycastHit hit;
-        // If the ray intersects an obect stop the enemy
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _maxVisionDistance, layerMask))
+        resetMovementSpeed = GetComponent<EnemyMovementBehvaiour>().MovementSpeed;
+    }
+
+    void Update()
+    {
+        if(Target)
         {
-            //changes the ray to yellow if it hits the player
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 target = Target.transform.position - transform.position;
+            if (Vector3.Dot(target, forward) >= 5)
+            {
+                GetComponent<EnemyMovementBehvaiour>().MovementSpeed = 0;
+                //Debug.Log(target);
+            }
+            else
+                GetComponent<EnemyMovementBehvaiour>().MovementSpeed = resetMovementSpeed;
         }
-        else
-        {
-            //enemy's raycast remains white
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-        }
-    
     }
 }

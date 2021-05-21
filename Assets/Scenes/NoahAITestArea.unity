@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wander Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3788042042041599781, guid: 75e6bbe81cac10544ab001a408f8640f,
+        type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 915553861}
     - target: {fileID: 3788042042041599782, guid: 75e6bbe81cac10544ab001a408f8640f,
         type: 3}
       propertyPath: Points.Array.size
@@ -345,6 +350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wander Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3788042042041599781, guid: 75e6bbe81cac10544ab001a408f8640f,
+        type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 915553861}
     - target: {fileID: 3788042042041599782, guid: 75e6bbe81cac10544ab001a408f8640f,
         type: 3}
       propertyPath: Points.Array.size
@@ -380,6 +390,11 @@ PrefabInstance:
       propertyPath: Points.Array.data[5]
       value: 
       objectReference: {fileID: 646128824}
+    - target: {fileID: 3788042042041599782, guid: 75e6bbe81cac10544ab001a408f8640f,
+        type: 3}
+      propertyPath: RotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3788042042041599835, guid: 75e6bbe81cac10544ab001a408f8640f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -535,7 +550,7 @@ GameObject:
   - component: {fileID: 618904340}
   m_Layer: 0
   m_Name: Wander End Point
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -734,7 +749,7 @@ GameObject:
   - component: {fileID: 934992716}
   m_Layer: 0
   m_Name: DP Left (lvl 2) Enter
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,7 +769,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportReciever: {fileID: 1022112952}
   actor: {fileID: 3788042042041599780, guid: 75e6bbe81cac10544ab001a408f8640f, type: 3}
-  timer: 5
 --- !u!65 &934992717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1069,7 +1083,7 @@ GameObject:
   - component: {fileID: 1168655078}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1196,7 +1210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 915553861}
-  _maxVisionDistance: 5
+  _maxVisionDistance: 0
+  _maxVisionAngle: 0
 --- !u!1 &1254172995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,7 +1228,7 @@ GameObject:
   - component: {fileID: 1254173000}
   m_Layer: 0
   m_Name: DP Left (lvl 1) Enter
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1310,7 +1325,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportReciever: {fileID: 355114431}
   actor: {fileID: 0}
-  timer: 5
 --- !u!1 &1738516474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,7 +1432,7 @@ GameObject:
   - component: {fileID: 1885867719}
   m_Layer: 0
   m_Name: DP Right (lvl 2)
-  m_TagString: Untagged
+  m_TagString: Patrol Point
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1531,17 +1545,17 @@ PrefabInstance:
     - target: {fileID: 5180821249440091356, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.17
+      value: 13.37
       objectReference: {fileID: 0}
     - target: {fileID: 5180821249440091356, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.39
+      value: 6.12
       objectReference: {fileID: 0}
     - target: {fileID: 5180821249440091356, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.8
+      value: -2.49
       objectReference: {fileID: 0}
     - target: {fileID: 5180821249440091356, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
@@ -1588,5 +1602,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bdf293808377d0c478db3dc931f71b69, type: 2}
+    - target: {fileID: 5180821249440091358, guid: 37d7187bda19bcf469369e030a8e3295,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d7187bda19bcf469369e030a8e3295, type: 3}
