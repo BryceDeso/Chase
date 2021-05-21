@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerBehavior : MonoBehaviour
 {
     private Rigidbody _rigidbody;
-    [SerializeField]
-    private PlayerControls _playerControl;
 
     //Used tell which way the player is facing.
     private bool turnedRight = false;
@@ -17,7 +15,6 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _playerControl = GetComponent<PlayerControls>();
     }
 
     

@@ -10,18 +10,20 @@ public class TeleportBehavior : MonoBehaviour
     public GameObject actor;
     //delay timer for the teleporter
     public float timer;
-    //once an actor enters the area it'll teleport them to the recieveing teleporter
+    //Checks the gameobject's tag that entered the trigger and if tag matches, 
+    //teleports the gameobject to the reciveing teleporter
     private void OnTriggerEnter(Collider other)
     {
         float timedown = timer;
-        if (!other.gameObject.CompareTag("Wander"))
-            return;
-        if (timedown == timer)
+        if (other.gameObject.CompareTag("Wander") || other.gameObject.CompareTag("Player"))
         {
-            other.transform.position = teleportReciever.transform.position;
-            timedown -= Time.deltaTime;
+            if (timedown == timer)
+            {
+                other.transform.position = teleportReciever.transform.position;
+                timedown -= Time.deltaTime;
+            }
+            else if (timedown <= 0)
+                timedown = timer;
         }
-        else if (timedown <= 0)
-            timedown = timer;
     }
 }
