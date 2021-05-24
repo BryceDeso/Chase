@@ -2,22 +2,57 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Player",
-            "id": "923268ab-696d-45cd-bebf-942f5d0b60a4",
+            "name": "Gun",
+            "id": "bdecd6fd-5310-4f7d-8b6b-ba5fda45d5a3",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "Value",
-                    "id": "54c44e94-f32c-4711-9138-888607ef8468",
-                    "expectedControlType": "Vector2",
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "716dd6ec-16e8-48fe-ae65-1c0dd702a1f2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
             ],
             "bindings": [
                 {
-                    "name": "WASD",
-                    "id": "d729f558-d3ec-49f0-8558-ce2341f8dec6",
+                    "name": "",
+                    "id": "40a0a78f-84f5-4d72-8eab-6b9b921b95a8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player",
+            "id": "f96605ab-f3ca-4e22-8aac-cd3081b669da",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "d9194431-0cdd-49b3-b356-c2c8c1be0040",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "UseTeleporter",
+                    "type": "Button",
+                    "id": "9235cda0-dc7d-4eeb-bed9-7a2b4a00a0d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "9f01ae40-17d5-4ba0-8d09-9903e4e53f94",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -27,30 +62,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "ad919674-3542-4556-90ca-8f529fb776a2",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "e75fbf18-284f-4f9d-a0e4-f8eb77f8bedc",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
-                    "id": "6120a521-f78b-4541-bd38-b8df09423bea",
+                    "id": "6f9a6947-cafb-4f49-97a5-60804c7b5f7d",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -61,7 +74,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "ee436c10-117c-41ef-80bb-c2ff11f17ac3",
+                    "id": "56262589-1f5e-462f-a62a-9a9e151bdb2e",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -69,6 +82,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "99cbe3d8-fad8-4e9e-ad3b-7973e904b170",
+                    "path": "<Keyboard>/s",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseTeleporter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
