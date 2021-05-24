@@ -767,18 +767,17 @@ GameObject:
 --- !u!114 &934992716
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7743103773872258164, guid: f32265066997d854c9fd99f562c2825b,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934992715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d44ecc54ef0491d4cb8e092504f8dd3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 799ba78dd483c6b44b25865e8fcda902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   teleportReciever: {fileID: 1022112952}
-  actor: {fileID: 3788042042041599780, guid: 75e6bbe81cac10544ab001a408f8640f, type: 3}
+  timer: 0
 --- !u!65 &934992717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1330,11 +1329,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254172995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d44ecc54ef0491d4cb8e092504f8dd3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 799ba78dd483c6b44b25865e8fcda902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportReciever: {fileID: 355114431}
-  actor: {fileID: 0}
+  teleportReciever: {fileID: 1022112952}
+  timer: 0
 --- !u!1 &1738516474
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,6 @@ public class TeleportBehavior : MonoBehaviour
 {   
     //recieveing end of the teleporter
     public Transform teleportReciever;
-    //actor that gets teleported
-    public GameObject actor;
     //delay timer for the teleporter
     public float timer;
     //once an actor enters the area it'll teleport them to the recieveing teleporter
