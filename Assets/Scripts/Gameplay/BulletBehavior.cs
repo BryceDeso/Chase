@@ -23,7 +23,7 @@ public class BulletBehavior : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks the object that entered the bullets collision radius then checks the objects tags. 
+    /// Checks the object that entered the bullets collision radius then checks the objects tags.
     /// </summary>
     public void OnTriggerEnter(Collider other)
     {
