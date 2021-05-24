@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 915553861}
+    - target: {fileID: 3788042042041599781, guid: 75e6bbe81cac10544ab001a408f8640f,
+        type: 3}
+      propertyPath: _visionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3788042042041599782, guid: 75e6bbe81cac10544ab001a408f8640f,
         type: 3}
       propertyPath: Points.Array.size
@@ -355,6 +360,11 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 915553861}
+    - target: {fileID: 3788042042041599781, guid: 75e6bbe81cac10544ab001a408f8640f,
+        type: 3}
+      propertyPath: _visionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3788042042041599782, guid: 75e6bbe81cac10544ab001a408f8640f,
         type: 3}
       propertyPath: Points.Array.size
@@ -1210,8 +1220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 915553861}
-  _maxVisionDistance: 0
-  _maxVisionAngle: 0
+  _visionDistance: 5
+  _visionAngle: 0
 --- !u!1 &1254172995
 GameObject:
   m_ObjectHideFlags: 0
