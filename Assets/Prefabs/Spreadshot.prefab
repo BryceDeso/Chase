@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1467398923103932567}
   m_Layer: 0
   m_Name: Spreadshot
-  m_TagString: Power-up
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
