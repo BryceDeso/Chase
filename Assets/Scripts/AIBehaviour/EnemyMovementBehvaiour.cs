@@ -1,44 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyMovementBehvaiour : MonoBehaviour
 {
-    [Tooltip("rigidbody attached to the object")]
+    [Tooltip("Patrol points for the enemy")]
     [SerializeField]
-    private Rigidbody _rigidbody;
-    [Tooltip("the object the enemy will be seeking")]
-    [SerializeField]
-    private GameObject _target;
-    private NavMeshAgent _agent;
+    public Transform[] Points;
+    //indecator for the current point that the enemy is on
+    int current;
+    //speed of the Enemy
+    public float MovementSpeed;
+    //speed of the enemy's rotation
+    public float RotationSpeed;
+    //direction that the enemy looks at
+    private Vector3 _direction;
+    private Quaternion _lookRotation;
 
-    public GameObject Target
-    {
-        get
-        {
-            return _target;
-        }
-        set
-        {
-            _target = value;
-        }
-    }
+
     // Start is called before the first frame update
     void Start()
     {
-        //intializes the rigidbody and nav mesh agent
-        _rigidbody = GetComponent<Rigidbody>();
-        _agent = GetComponent<NavMeshAgent>();
+        //initalizes the point the enemy starts at
+        current = 0;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Patrol Point"))
+            return;
+        current = (current + 1) % Points.Length;
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    void Update()
     {
-        //if the enemy doesn't have a target it will just return
-        if (!_target)
-            return;
-        //the agents destination will be the targets transform
-        _agent.SetDestination(_target.transform.position);
+        //if the position of the enemy does not equal the position of it's current point continue moving to the current point's transform
+        if(transform.position != Points[current].position)
+        {
+           
+            //sets the enemy's transform to move towards the transform of the current point
+            transform.position = Vector3.MoveTowards(transform.position, Points[current].position, MovementSpeed * Time.deltaTime);
+            //looks at the point it's moving towards
+            _direction = (Points[current].position - transform.position).normalized;
+            _lookRotation = Quaternion.LookRotation(_direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+        }
     }
 }
