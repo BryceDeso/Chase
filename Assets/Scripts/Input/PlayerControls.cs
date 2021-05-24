@@ -15,33 +15,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Gun"",
-            ""id"": ""bdecd6fd-5310-4f7d-8b6b-ba5fda45d5a3"",
-            ""actions"": [
-                {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""716dd6ec-16e8-48fe-ae65-1c0dd702a1f2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""40a0a78f-84f5-4d72-8eab-6b9b921b95a8"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""Player"",
             ""id"": ""f96605ab-f3ca-4e22-8aac-cd3081b669da"",
             ""actions"": [
@@ -57,6 +30,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""UseTeleporter"",
                     ""type"": ""Button"",
                     ""id"": ""9235cda0-dc7d-4eeb-bed9-7a2b4a00a0d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""e20afd5b-6236-412f-a45f-9614c3aa60f5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -106,19 +87,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""UseTeleporter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dacd3ad7-e56a-449c-9f51-a9ce8e1023f8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Gun
-        m_Gun = asset.FindActionMap("Gun", throwIfNotFound: true);
-        m_Gun_Shoot = m_Gun.FindAction("Shoot", throwIfNotFound: true);
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_UseTeleporter = m_Player.FindAction("UseTeleporter", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -165,50 +155,19 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Gun
-    private readonly InputActionMap m_Gun;
-    private IGunActions m_GunActionsCallbackInterface;
-    private readonly InputAction m_Gun_Shoot;
-    public struct GunActions
-    {
-        private @PlayerControls m_Wrapper;
-        public GunActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Shoot => m_Wrapper.m_Gun_Shoot;
-        public InputActionMap Get() { return m_Wrapper.m_Gun; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GunActions set) { return set.Get(); }
-        public void SetCallbacks(IGunActions instance)
-        {
-            if (m_Wrapper.m_GunActionsCallbackInterface != null)
-            {
-                @Shoot.started -= m_Wrapper.m_GunActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_GunActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_GunActionsCallbackInterface.OnShoot;
-            }
-            m_Wrapper.m_GunActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
-            }
-        }
-    }
-    public GunActions @Gun => new GunActions(this);
-
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_UseTeleporter;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @UseTeleporter => m_Wrapper.m_Player_UseTeleporter;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -224,6 +183,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @UseTeleporter.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTeleporter;
                 @UseTeleporter.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTeleporter;
                 @UseTeleporter.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTeleporter;
+                @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -234,17 +196,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @UseTeleporter.started += instance.OnUseTeleporter;
                 @UseTeleporter.performed += instance.OnUseTeleporter;
                 @UseTeleporter.canceled += instance.OnUseTeleporter;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-    public interface IGunActions
-    {
-        void OnShoot(InputAction.CallbackContext context);
-    }
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnUseTeleporter(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

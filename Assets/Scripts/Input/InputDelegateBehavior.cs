@@ -29,7 +29,7 @@ public class InputDelegateBehavior : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
-        _playerControls.Gun.Shoot.performed += context => _bulletEmitter.Shoot();
+        _playerControls.Player.Shoot.performed += context => _bulletEmitter.Shoot();
     }
 
     void FixedUpdate()
