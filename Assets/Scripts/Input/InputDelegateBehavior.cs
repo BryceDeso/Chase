@@ -8,6 +8,8 @@ public class InputDelegateBehavior : MonoBehaviour
     [SerializeField]
     private BulletEmitterBehavior _bulletEmitter;
 
+    private PlayerMovementBehaviour _playerMovement;
+
     private void Awake()
     {
         _playerControls = new PlayerControls();
@@ -26,6 +28,13 @@ public class InputDelegateBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _playerControls.Gun.Shoot.performed += context => _bulletEmitter.Shoot();
+        _playerMovement = GetComponent<PlayerMovementBehaviour>();
+        _playerControls.Player.Shoot.performed += context => _bulletEmitter.Shoot();
+    }
+
+    void FixedUpdate()
+    {
+        Vector2 moveDirection = _playerControls.Player.Movement.ReadValue<Vector2>();
+        _playerMovement.Move(moveDirection);
     }
 }
