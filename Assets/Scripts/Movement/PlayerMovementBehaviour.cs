@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
-
-public class PlayerMovementBehaviour : MonoBehaviour
-{
-=======
 using UnityEngine.InputSystem;
+
 
 public class PlayerMovementBehaviour : MonoBehaviour
 {
     private PlayerControls _playerControls;
 
->>>>>>> Test-branch
+
     //A reference to the rigidbody component
     private Rigidbody _rigidbody;
 
@@ -33,10 +29,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
         _velocity = direction * moveSpeed * Time.deltaTime;
     }
 
-<<<<<<< HEAD
+
     // Update is called once per frame
-=======
->>>>>>> Test-branch
+
     void FixedUpdate()
     {
         _rigidbody.MovePosition(transform.position + _velocity);
