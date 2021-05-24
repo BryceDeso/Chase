@@ -6,13 +6,12 @@ TagManager:
   tags:
   - Obstacle
   - Enemy
-<<<<<<< HEAD
   - Patrol Point
   - Wander
   - Teleporter
-=======
+  - SpreadShot
+  - PiercingShot
   - Power-up
->>>>>>> 32ea127... Updated the shapes of the collectables and the spreadshot power up
   layers:
   - Default
   - TransparentFX

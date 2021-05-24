@@ -7,11 +7,10 @@ public class BulletEmitterBehavior : MonoBehaviour
     [Tooltip("Refernce to the bullet")]
     [SerializeField]
     private GameObject _bullet;
-    [Tooltip("How fast the bullet wil move")]
-    public float _bulletSpeed;
-    [Tooltip("The amount of time it takes to shoot again.")]
+    [Tooltip("Reference to the gun the emitter is attatched to")]
     [SerializeField]
-    private float TimeBetweenShots = 0f;
+    private GunBehavior _gun;
+
     //Holds a bool to determind wether or not you can shoot again.
     private bool canShoot = true;
 
@@ -26,7 +25,7 @@ public class BulletEmitterBehavior : MonoBehaviour
         {
             canShoot = false;
 
-            Vector3 force = transform.forward * _bulletSpeed;
+            Vector3 force = transform.forward * _gun._bulletSpeed;
 
             GameObject bulletFired = Instantiate(_bullet, transform.position, transform.rotation);
 
@@ -36,7 +35,7 @@ public class BulletEmitterBehavior : MonoBehaviour
                 bulletscript.Rigidbody.AddForce(force, ForceMode.Impulse);
             }
 
-            Invoke("CanShoot", TimeBetweenShots);
+            Invoke("CanShoot", _gun.TimeBetweenShots);
         }
     }
 

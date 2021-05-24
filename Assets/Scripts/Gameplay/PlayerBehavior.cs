@@ -9,6 +9,10 @@ public class PlayerBehavior : MonoBehaviour
 
     private PlayerControls _playerControls;
 
+    //Used to say if a power up has been collected and which one was collected
+    public bool canShootSpread = false;
+    public bool canShootPierce = false;
+
     //Used tell which way the player is facing.
     private bool turnedRight = false;
     private bool turnedLeft = false;
@@ -77,6 +81,14 @@ public class PlayerBehavior : MonoBehaviour
             nearTeleporter = true;
 
             _teleporter = other.GetComponent<TeleportBehavior>();
+        }
+        else if(other.CompareTag("SpreadShot"))
+        {
+            canShootSpread = true;
+        }
+        else if (other.CompareTag("PiercingShot"))
+        {
+            canShootPierce = true;
         }
     }
 
