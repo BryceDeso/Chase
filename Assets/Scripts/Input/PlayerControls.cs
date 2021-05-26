@@ -45,7 +45,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""Left and Right"",
                     ""id"": ""9f01ae40-17d5-4ba0-8d09-9903e4e53f94"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -80,7 +80,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""99cbe3d8-fad8-4e9e-ad3b-7973e904b170"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Patrol Point
   - Wander
+  - Collectables
   layers:
   - Default
   - TransparentFX
