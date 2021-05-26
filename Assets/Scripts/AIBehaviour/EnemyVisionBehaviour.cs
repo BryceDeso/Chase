@@ -10,11 +10,11 @@ public class EnemyVisionBehaviour : MonoBehaviour
 
     [Tooltip("Enemy's vision distance")]
     [SerializeField]
-    private int _visionDistance;
+    private int _maxDistance;
 
     [Tooltip("Enemy's angle")]
     [SerializeField]
-    private float _visionAngle;
+    private float _maxAngle;
 
     private float resetMovementSpeed;
     //getter and setter for the target
@@ -44,8 +44,12 @@ public class EnemyVisionBehaviour : MonoBehaviour
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             //the distance of the target
             Vector3 target = Target.transform.position - transform.position;
+            //distance of the target from the enemy
+            float distance = target.magnitude;
+            //angle of the enemy's vision
+            float angle = Mathf.Acos(Vector3.Dot(forward, target.normalized));
             //if the dot prod. is greater than the vision it'll trigger this sequence
-            if (Vector3.Dot(target, forward) <= _visionDistance && Vector3.Dot(target, forward) >= 0)
+            if (angle <= _maxAngle && distance <= _maxDistance)
             {
                 //stops the enmey by setting it's speed to zero
                 GetComponent<EnemyMovementBehvaiour>().MovementSpeed = 0;
