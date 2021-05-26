@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Patrol Point
   - Wander
+  - Teleporter
+  - Gun
   layers:
   - Default
   - TransparentFX
