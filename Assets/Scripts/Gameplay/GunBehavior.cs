@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class GunBehavior : MonoBehaviour
 {
-    [Tooltip("How fast the bullet wil move")]
-    public float _bulletSpeed;
-    [Tooltip("The amount of time it takes to shoot again.")]
-    [SerializeField]
-    public float TimeBetweenShots = 0f;
-    [Tooltip("Holds refernces to the BulletEmitters")]
-    public BulletEmitterBehavior TopEmitter;
-    public BulletEmitterBehavior MiddleEmitter;
-    public BulletEmitterBehavior BottomEmitter;
     [Tooltip("Refernce to object that will collect powerups")]
     [SerializeField]
     private PlayerBehavior _powerUpCollected;
+
+    [Tooltip("How fast the bullet wil move")]
+    public float _bulletSpeed;
+
+    [Tooltip("The amount of time it takes to shoot again.")]
+    [SerializeField]
+    public float TimeBetweenShots = 0f;
+
+    [Tooltip("Holds a refernce to the top bullet emitters")]
+    public BulletEmitterBehavior TopEmitter;
+    [Tooltip("Holds a refernce to the middle bullet emitters")]
+    public BulletEmitterBehavior MiddleEmitter;
+    [Tooltip("Holds a refernce to the bottom bullet emitters")]
+    public BulletEmitterBehavior BottomEmitter;
 
     /// <summary>
     /// When the spreadShot powerup is collected, activate the two extra bullet emitters
