@@ -59,7 +59,7 @@ public class EnemyVisionBehaviour : MonoBehaviour
             if (angle <= _maxAngle && distance <= _maxDistance)
             {
                 //stops the enmey by setting it's speed to zero
-                GetComponent<EnemyDecisionBehaviour>().spotted = true;
+                GetComponent<EnemyMovementBehvaiour>().MovementSpeed = 0;
                 GetComponent<EnemyAttackBehaviour>().Attack();
                 transform.LookAt(Target.transform);
                 //Quaternion look = Quaternion.LookRotation(target);
