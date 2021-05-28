@@ -8,6 +8,8 @@ public class GunBehavior : MonoBehaviour
     [SerializeField]
     private PlayerBehavior _powerUpCollected;
 
+    private PlayerControls _playerControls;
+
     [Tooltip("How fast the bullet wil move")]
     public float _bulletSpeed;
 
@@ -22,6 +24,17 @@ public class GunBehavior : MonoBehaviour
     [Tooltip("Holds a refernce to the bottom bullet emitters")]
     public BulletEmitterBehavior BottomEmitter;
 
+    private void Start()
+    {
+        _playerControls = _powerUpCollected.GetComponent<PlayerControls>();
+    }
+
+    private void Update()
+    {
+        SpreadShot();
+        PiercingShot();
+    }
+
     /// <summary>
     /// When the spreadShot powerup is collected, activate the two extra bullet emitters
     /// </summary>
@@ -29,7 +42,11 @@ public class GunBehavior : MonoBehaviour
     {
         if (_powerUpCollected.canShootSpread == true)
         {
+            TopEmitter.gameObject.SetActive(true);
+            BottomEmitter.gameObject.SetActive(true);
 
+            _playerControls.Player.Shoot.performed += context => TopEmitter.Shoot();
+            _playerControls.Player.Shoot.performed += context => BottomEmitter.Shoot();
         }
     }
 
