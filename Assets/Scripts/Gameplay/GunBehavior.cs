@@ -6,12 +6,16 @@ public class GunBehavior : MonoBehaviour
 {
     [Tooltip("Refernce to object that will collect powerups")]
     [SerializeField]
-    private PlayerBehavior _powerUpCollected;
+    private PlayerBehavior _player;
 
-    private PlayerControls _playerControls;
+    private InputDelegateBehavior _delegateBehavior;
 
     [Tooltip("How fast the bullet wil move")]
     public float _bulletSpeed;
+
+    [Tooltip("How many times the player can shoot with a the spreadshot power up")]
+    [SerializeField]
+    private float spreadShotMax;
 
     [Tooltip("The amount of time it takes to shoot again.")]
     [SerializeField]
@@ -26,7 +30,7 @@ public class GunBehavior : MonoBehaviour
 
     private void Start()
     {
-        _playerControls = _powerUpCollected.GetComponent<PlayerControls>();
+        _delegateBehavior = _player.GetComponent<InputDelegateBehavior>();
     }
 
     private void Update()
@@ -36,17 +40,26 @@ public class GunBehavior : MonoBehaviour
     }
 
     /// <summary>
-    /// When the spreadShot powerup is collected, activate the two extra bullet emitters
+    /// When the spreadShot powerup is collected, activate the two extra bullet emitters and
+    /// when the player has shot shot the max amount of times, it will disable the extra emitters until a 
+    /// another power up is collected.
     /// </summary>
     private void SpreadShot()
     {
-        if (_powerUpCollected.canShootSpread == true)
+        if (_player.canShootSpread == true)
         {
-            TopEmitter.gameObject.SetActive(true);
-            BottomEmitter.gameObject.SetActive(true);
+            if(_delegateBehavior._playerControls.Player.Shoot.triggered)
+            {
+                TopEmitter.Shoot();
+                BottomEmitter.Shoot();
+            }
+        }
+        if(TopEmitter.timesShot == spreadShotMax)
+        {
+            TopEmitter.timesShot = 0;
+            BottomEmitter.timesShot = 0;
 
-            _playerControls.Player.Shoot.performed += context => TopEmitter.Shoot();
-            _playerControls.Player.Shoot.performed += context => BottomEmitter.Shoot();
+            _player.canShootSpread = false;
         }
     }
 
@@ -55,7 +68,7 @@ public class GunBehavior : MonoBehaviour
     /// </summary>
     private void PiercingShot()
     {
-        if(_powerUpCollected.canShootPierce == true)
+        if(_player.canShootPierce == true)
         {
             
         }

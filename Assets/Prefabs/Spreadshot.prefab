@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 635851049741399068}
   - component: {fileID: 9131188887043288106}
   - component: {fileID: 1467398923103932567}
+  - component: {fileID: 3816462874243230559}
   m_Layer: 0
   m_Name: Spreadshot
-  m_TagString: Power-up
+  m_TagString: SpreadShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +124,15 @@ Halo:
     serializedVersion: 2
     rgba: 4294913961
   m_Size: 0.5
+--- !u!114 &3816462874243230559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6460434016196494225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6304be3a27ad74faaedb1c267f1511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

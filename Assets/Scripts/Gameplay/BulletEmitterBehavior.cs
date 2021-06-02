@@ -12,6 +12,11 @@ public class BulletEmitterBehavior : MonoBehaviour
     [SerializeField]
     private GunBehavior _gun;
 
+    //Holds the amount of times the player has shot(This is used for power ups and is reset when max
+    //amount of shots has been reached for a power up)
+    //[HideInInspector]
+    public float timesShot;
+
     //Holds a bool to determind wether or not you can shoot again.
     private bool canShoot = true;
 
@@ -35,6 +40,8 @@ public class BulletEmitterBehavior : MonoBehaviour
             {
                 bulletscript.Rigidbody.AddForce(force, ForceMode.Impulse);
             }
+
+            timesShot++;
 
             Invoke("CanShoot", _gun.TimeBetweenShots);
         }

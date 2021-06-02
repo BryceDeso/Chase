@@ -20,8 +20,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
     //A reference of a Vector3
     private Vector3 _velocity;
 
-    public Vector3 point;
-
     // Start is called before the first frame update
     void Start()
     {

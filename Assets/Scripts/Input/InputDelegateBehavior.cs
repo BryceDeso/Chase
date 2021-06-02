@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class InputDelegateBehavior : MonoBehaviour
 {
-    private PlayerControls _playerControls;
+    public PlayerControls _playerControls;
     [SerializeField]
     private GunBehavior _gun;
 
