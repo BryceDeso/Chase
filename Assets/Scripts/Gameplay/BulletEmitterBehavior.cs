@@ -14,7 +14,6 @@ public class BulletEmitterBehavior : MonoBehaviour
 
     //Holds the amount of times the player has shot(This is used for power ups and is reset when max
     //amount of shots has been reached for a power up)
-    //[HideInInspector]
     public float timesShot;
 
     //Holds a bool to determind wether or not you can shoot again.

@@ -90,6 +90,10 @@ public class PlayerBehavior : MonoBehaviour
         {
             canShootPierce = true;
         }
+        else if (other.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     //If the player exits the trigger of a game object tagged teleporter it will set nearTeleporter to false.
