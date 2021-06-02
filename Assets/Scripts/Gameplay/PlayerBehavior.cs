@@ -17,6 +17,11 @@ public class PlayerBehavior : MonoBehaviour
     private bool turnedRight = false;
     private bool turnedLeft = false;
 
+    [HideInInspector]
+    public int score = 0;
+    [HideInInspector]
+    public int lifes = 0;
+
     private bool nearTeleporter;
 
     // Start is called before the first frame update
@@ -57,7 +62,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         //If the S key is pressed this frame and while nearTelporter is true, will set nearTeleporter
         //to false and set the player's position to the the teleporter's receiver.
-        if (keyboard.sKey.wasPressedThisFrame && nearTeleporter == true)
+        if (keyboard.wKey.wasPressedThisFrame && nearTeleporter == true)
         {
             nearTeleporter = false;
 
@@ -82,7 +87,7 @@ public class PlayerBehavior : MonoBehaviour
 
             _teleporter = other.GetComponent<TeleportBehavior>();
         }
-        else if(other.CompareTag("SpreadShot"))
+        else if (other.CompareTag("SpreadShot"))
         {
             canShootSpread = true;
         }

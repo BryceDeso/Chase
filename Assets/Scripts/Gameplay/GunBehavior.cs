@@ -70,7 +70,7 @@ public class GunBehavior : MonoBehaviour
     {
         if(_player.canShootPierce == true)
         {
-            
+
         }
     }
 }

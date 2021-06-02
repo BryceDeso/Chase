@@ -5,8 +5,7 @@ using UnityEngine;
 public class BulletEmitterBehavior : MonoBehaviour
 {
     [Tooltip("Refernce to the bullet")]
-    [SerializeField]
-    private GameObject _bullet;
+    public GameObject _bullet;
 
     [Tooltip("Reference to the gun the emitter is attatched to")]
     [SerializeField]

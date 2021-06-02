@@ -12,6 +12,7 @@ TagManager:
   - SpreadShot
   - PiercingShot
   - Power-up
+  - Bullet
   layers:
   - Default
   - TransparentFX
