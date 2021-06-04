@@ -263,7 +263,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 163737564737f256e656d697e2d61647, type: 2}
+  - {fileID: 2100000, guid: 53ce597fb1b18f9499e6b8d21cb3ad70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,6 +447,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PiercingShot
       objectReference: {fileID: 0}
+    - target: {fileID: 3250712850713660974, guid: a2541396639ddd748869703bd956d00f,
+        type: 3}
+      propertyPath: m_TagString
+      value: PiercingShot
+      objectReference: {fileID: 0}
     - target: {fileID: 5104729875637832524, guid: a2541396639ddd748869703bd956d00f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -547,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 0}
+  _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
   _gun: {fileID: 2017026791}
   timesShot: 0
 --- !u!1 &748911180
@@ -924,7 +929,7 @@ GameObject:
   - component: {fileID: 959792648}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1137,7 +1142,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 163737564737f256e656d697e2d61647, type: 2}
+  - {fileID: 2100000, guid: 53ce597fb1b18f9499e6b8d21cb3ad70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1209,7 +1214,7 @@ GameObject:
   - component: {fileID: 1212830243}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1361,7 +1366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 0}
+  _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
   _gun: {fileID: 2017026791}
   timesShot: 0
 --- !u!4 &1317509414
@@ -1407,7 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 0}
+  _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
   _gun: {fileID: 2017026791}
   timesShot: 0
 --- !u!4 &1580110968
