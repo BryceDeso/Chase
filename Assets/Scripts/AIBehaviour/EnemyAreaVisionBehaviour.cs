@@ -30,9 +30,4 @@ public class EnemyAreaVisionBehaviour : MonoBehaviour
         //removes the enemy from the list
         list.Remove(other.gameObject);
     }
-
-    private void Update()
-    {
-        
-    }
 }

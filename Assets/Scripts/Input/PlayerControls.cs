@@ -37,7 +37,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
+<<<<<<< HEAD
                     ""id"": ""bb61771f-3461-41ff-a0c8-18666b78b96f"",
+=======
+                    ""id"": ""e20afd5b-6236-412f-a45f-9614c3aa60f5"",
+>>>>>>> NoahEasleys-branch
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -90,7 +94,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+<<<<<<< HEAD
                     ""id"": ""74691f9a-9b57-4eaa-8a97-7a10ee48f70d"",
+=======
+                    ""id"": ""dacd3ad7-e56a-449c-9f51-a9ce8e1023f8"",
+>>>>>>> NoahEasleys-branch
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": ""Press"",
                     ""processors"": """",

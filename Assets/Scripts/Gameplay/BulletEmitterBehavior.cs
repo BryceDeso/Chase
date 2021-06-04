@@ -31,17 +31,30 @@ public class BulletEmitterBehavior : MonoBehaviour
 
             Vector3 force = transform.forward * _gun._bulletSpeed;
 
+<<<<<<< HEAD
             GameObject bulletFired = Instantiate(_bullet.gameObject, transform.position, transform.rotation);
 
+=======
+            GameObject bulletFired = Instantiate(_bullet, transform.position, transform.rotation);
+>>>>>>> NoahEasleys-branch
             BulletBehavior bulletscript = bulletFired.GetComponent<BulletBehavior>();
+            EnemyBulletBehaviour enemyBulletScript = bulletFired.GetComponent<EnemyBulletBehaviour>();
             if (bulletscript)
             {
                 bulletscript.Rigidbody.AddForce(force, ForceMode.Impulse);
             }
+<<<<<<< HEAD
 
             timesShot++;
 
             Invoke("CanShoot", _gun.TimeBetweenShots);
+=======
+            if(enemyBulletScript)
+            {
+                enemyBulletScript.Rigidbody.AddForce(force, ForceMode.Impulse);
+            }
+            Invoke("CanShoot", TimeBetweenShots);
+>>>>>>> NoahEasleys-branch
         }
     }
 

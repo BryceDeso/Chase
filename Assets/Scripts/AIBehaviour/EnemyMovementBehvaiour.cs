@@ -38,9 +38,10 @@ public class EnemyMovementBehvaiour : MonoBehaviour
         //if the position of the enemy does not equal the position of it's current point continue moving to the current point's transform
         if(transform.position != Points[current].position)
         {
-           
+
             //sets the enemy's transform to move towards the transform of the current point
             transform.position = Vector3.MoveTowards(transform.position, Points[current].position, MovementSpeed * Time.deltaTime);
+            
             //looks at the point it's moving towards
             _direction = (Points[current].position - transform.position).normalized;
             _lookRotation = Quaternion.LookRotation(_direction);

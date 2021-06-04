@@ -9,10 +9,14 @@ TagManager:
   - Patrol Point
   - Wander
   - Teleporter
+<<<<<<< HEAD
   - SpreadShot
   - PiercingShot
   - Power-up
   - Bullet
+=======
+  - Gun
+>>>>>>> NoahEasleys-branch
   layers:
   - Default
   - TransparentFX
