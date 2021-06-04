@@ -5,8 +5,7 @@ using UnityEngine;
 public class GunBehavior : MonoBehaviour
 {
     [Tooltip("Refernce to object that will collect powerups")]
-    [SerializeField]
-    private PlayerBehavior _player;
+    public PlayerBehavior _player;
 
     private InputDelegateBehavior _delegateBehavior;
 
@@ -46,7 +45,14 @@ public class GunBehavior : MonoBehaviour
     /// </summary>
     private void SpreadShot()
     {
-        if (_player.canShootSpread == true)
+        if (TopEmitter.timesShot == spreadShotMax)
+        {
+            TopEmitter.timesShot = 0;
+            BottomEmitter.timesShot = 0;
+
+            _player.canShootSpread = false;
+        }
+        else if (_player.canShootSpread == true)
         {
             if(_delegateBehavior._playerControls.Player.Shoot.triggered)
             {
@@ -54,23 +60,24 @@ public class GunBehavior : MonoBehaviour
                 BottomEmitter.Shoot();
             }
         }
-        if(TopEmitter.timesShot == spreadShotMax)
-        {
-            TopEmitter.timesShot = 0;
-            BottomEmitter.timesShot = 0;
-
-            _player.canShootSpread = false;
-        }
     }
 
     /// <summary>
-    /// When the piercingShot powerup is collected, 
+    /// When the piercingShot powerup is collected, will set a bool in the bullet behavior to true enabling the bullet to pass
+    /// through any gameobject tagged with Enemy and when shot it will set the bool to false as well as setting that the player
+    /// had collected the powerup to false.
     /// </summary>
     private void PiercingShot()
     {
         if(_player.canShootPierce == true)
         {
+            MiddleEmitter._bullet.canShootPierce = true;
 
+            if (_delegateBehavior._playerControls.Player.Shoot.triggered)
+            {
+                _player.canShootPierce = false;
+                MiddleEmitter._bullet.canShootPierce= false;
+            }
         }
     }
 }
