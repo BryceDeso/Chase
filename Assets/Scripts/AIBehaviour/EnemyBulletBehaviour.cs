@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class BulletBehavior : MonoBehaviour
+public class EnemyBulletBehaviour : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     [SerializeField]
@@ -31,7 +31,7 @@ public class BulletBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Enemy"))
+        else if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
         }

@@ -29,13 +29,16 @@ public class BulletEmitterBehavior : MonoBehaviour
             Vector3 force = transform.forward * _bulletSpeed;
 
             GameObject bulletFired = Instantiate(_bullet, transform.position, transform.rotation);
-
             BulletBehavior bulletscript = bulletFired.GetComponent<BulletBehavior>();
+            EnemyBulletBehaviour enemyBulletScript = bulletFired.GetComponent<EnemyBulletBehaviour>();
             if (bulletscript)
             {
                 bulletscript.Rigidbody.AddForce(force, ForceMode.Impulse);
             }
-
+            if(enemyBulletScript)
+            {
+                enemyBulletScript.Rigidbody.AddForce(force, ForceMode.Impulse);
+            }
             Invoke("CanShoot", TimeBetweenShots);
         }
     }
