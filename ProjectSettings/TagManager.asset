@@ -8,6 +8,11 @@ TagManager:
   - Enemy
   - Patrol Point
   - Wander
+  - Teleporter
+  - SpreadShot
+  - PiercingShot
+  - Power-up
+  - Bullet
   layers:
   - Default
   - TransparentFX

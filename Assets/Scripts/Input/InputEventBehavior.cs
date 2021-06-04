@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputeventBehavior : MonoBehaviour
+public class InputEventBehavior : MonoBehaviour
 {
     [SerializeField]
     private BulletEmitterBehavior _bulletEmitterBehavior;
