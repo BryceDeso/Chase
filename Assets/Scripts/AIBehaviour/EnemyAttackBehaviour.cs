@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class EnemyAttackBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Tooltip("Enemy's weapon")]
+    [SerializeField]
+    public GameObject weapon;
+
+    public void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Attack()
     {
-        
+        weapon.GetComponent<PlayerBulletEmitterBehavior>().Shoot();
     }
 }

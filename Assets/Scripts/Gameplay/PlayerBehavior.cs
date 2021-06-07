@@ -9,9 +9,18 @@ public class PlayerBehavior : MonoBehaviour
 
     private PlayerControls _playerControls;
 
+    //Used to say if a power up has been collected and which one was collected
+    public bool canShootSpread = false;
+    public bool canShootPierce = false;
+
     //Used tell which way the player is facing.
     private bool turnedRight = false;
     private bool turnedLeft = false;
+
+    [HideInInspector]
+    public int score = 0;
+    [HideInInspector]
+    public int lifes = 0;
 
     private bool nearTeleporter;
 
@@ -53,7 +62,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         //If the S key is pressed this frame and while nearTelporter is true, will set nearTeleporter
         //to false and set the player's position to the the teleporter's receiver.
-        if (keyboard.sKey.wasPressedThisFrame && nearTeleporter == true)
+        if (keyboard.wKey.wasPressedThisFrame && nearTeleporter == true)
         {
             nearTeleporter = false;
 
@@ -77,6 +86,18 @@ public class PlayerBehavior : MonoBehaviour
             nearTeleporter = true;
 
             _teleporter = other.GetComponent<TeleportBehavior>();
+        }
+        else if (other.CompareTag("SpreadShot"))
+        {
+            canShootSpread = true;
+        }
+        else if (other.CompareTag("PiercingShot"))
+        {
+            canShootPierce = true;
+        }
+        else if (other.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
         }
     }
 
