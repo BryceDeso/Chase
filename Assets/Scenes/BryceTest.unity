@@ -553,8 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
-  _gun: {fileID: 0}
-  timesShot: 0
+  _player: {fileID: 748911185}
 --- !u!1 &748911180
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +673,8 @@ MonoBehaviour:
   score: 0
   lifes: 0
   _bulletSpeed: 35
-  spreadShotMax: 5
+  _spreadPowerTimer: 15
+  _piercePowerTimer: 15
   TimeBetweenShots: 0.5
   TopEmitter: {fileID: 596352716}
   MiddleEmitter: {fileID: 1317509413}
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda88da067e504643973ebe68aa9007d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gun: {fileID: 0}
+  _player: {fileID: 748911185}
 --- !u!114 &748911187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,8 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
-  _gun: {fileID: 0}
-  timesShot: 0
+  _player: {fileID: 748911185}
 --- !u!4 &1317509414
 Transform:
   m_ObjectHideFlags: 0
@@ -1422,8 +1421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
-  _gun: {fileID: 0}
-  timesShot: 0
+  _player: {fileID: 748911185}
 --- !u!4 &1580110968
 Transform:
   m_ObjectHideFlags: 0
