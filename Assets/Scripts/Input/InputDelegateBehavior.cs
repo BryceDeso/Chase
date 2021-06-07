@@ -10,7 +10,10 @@ public class InputDelegateBehavior : MonoBehaviour
     private PlayerBehavior _player;
 
     private PlayerMovementBehaviour _playerMovement;
-
+    [Tooltip("Reference to the player")]
+    [SerializeField]
+    private PlayerBehavior _player;
+    
     private void Awake()
     {
         _playerControls = new PlayerControls();
