@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class InputDelegateBehavior : MonoBehaviour
 {
     public PlayerControls _playerControls;
-    [SerializeField]
-    private GunBehavior _gun;
-
     private PlayerMovementBehaviour _playerMovement;
-
+    [Tooltip("Reference to the player")]
+    [SerializeField]
+    private PlayerBehavior _player;
+    
     private void Awake()
     {
         _playerControls = new PlayerControls();
@@ -30,7 +30,7 @@ public class InputDelegateBehavior : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
-        _playerControls.Player.Shoot.performed += context => _gun.MiddleEmitter.Shoot();
+        _playerControls.Player.Shoot.performed += context => _player.MiddleEmitter.Shoot();
     }
 
     void FixedUpdate()
