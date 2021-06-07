@@ -30,11 +30,8 @@ public class InputDelegateBehavior : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
-<<<<<<< HEAD
+
         _playerControls.Player.Shoot.performed += context => _gun.MiddleEmitter.Shoot();
-=======
-        _playerControls.Player.Shoot.performed += context => _bulletEmitter.Shoot();
->>>>>>> NoahEasleys-branch
     }
 
     void FixedUpdate()
