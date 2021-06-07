@@ -62,8 +62,6 @@ public class EnemyVisionBehaviour : MonoBehaviour
                 GetComponent<EnemyMovementBehvaiour>().MovementSpeed = 0;
                 GetComponent<EnemyAttackBehaviour>().Attack();
                 transform.LookAt(Target.transform);
-                //Quaternion look = Quaternion.LookRotation(target);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, look, Time.deltaTime * GetComponent<EnemyMovementBehvaiour>().RotationSpeed);
             }
             else
                 //resets the enemy's movement speed
