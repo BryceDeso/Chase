@@ -9,7 +9,7 @@ public class EnemyVisionBehaviour : MonoBehaviour
 
     [Tooltip("The object that the enemy seeks")]
     [SerializeField]
-    private GameObject _target;
+    private Transform _target;
 
     [Tooltip("Enemy's vision distance")]
     [SerializeField]
@@ -21,7 +21,7 @@ public class EnemyVisionBehaviour : MonoBehaviour
 
     private float resetMovementSpeed;
     //getter and setter for the target
-    public GameObject Target
+    public Transform Target
     {
         get
         {
@@ -42,7 +42,7 @@ public class EnemyVisionBehaviour : MonoBehaviour
     void Update()
     {
         //if the ai detects the target then it'll activate this sequince
-        if(Target)
+        if(_target)
         {
             
             //the forward of the enemy

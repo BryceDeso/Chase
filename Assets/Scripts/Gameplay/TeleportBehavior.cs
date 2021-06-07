@@ -8,19 +8,12 @@ public class TeleportBehavior : MonoBehaviour
     [SerializeField]
     public Transform teleportReciever;
 
-    [Tooltip("list of game objects that can't use the teleporter")]
-    [SerializeField]
-    public GameObject[] blacklist;
-
-    private int current = 0;
-
     //once an actor enters the area it'll teleport them to the recieveing teleporter
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject == blacklist[current])
-            return;
+        if (other.CompareTag("Wander") || other.CompareTag("Player"))
+            other.transform.position = teleportReciever.transform.position;
 
-        other.transform.position = teleportReciever.transform.position;
-
+        return;
     }
 }
