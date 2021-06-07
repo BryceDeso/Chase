@@ -9,11 +9,7 @@ public class PlayerBulletEmitterBehavior : MonoBehaviour
 
     [Tooltip("Reference to the gun the emitter is attatched to")]
     [SerializeField]
-    private GunBehavior _gun;
-
-    //Holds the amount of times the player has shot(This is used for power ups and is reset when max
-    //amount of shots has been reached for a power up)
-    public float timesShot;
+    private PlayerBehavior _player;
 
     //Holds a bool to determind wether or not you can shoot again.
     private bool canShoot = true;
@@ -29,7 +25,7 @@ public class PlayerBulletEmitterBehavior : MonoBehaviour
         {
             canShoot = false;
 
-            Vector3 force = transform.forward * _gun._bulletSpeed;
+            Vector3 force = transform.forward * _player._bulletSpeed;
 
             GameObject bulletFired = Instantiate(_bullet.gameObject, transform.position, transform.rotation);
 
@@ -40,9 +36,7 @@ public class PlayerBulletEmitterBehavior : MonoBehaviour
                 bulletscript.Rigidbody.AddForce(force, ForceMode.Impulse);
             }
 
-            timesShot++;
-
-            Invoke("CanShoot", _gun.TimeBetweenShots);
+            Invoke("CanShoot", _player.TimeBetweenShots);
         }
     }
 
