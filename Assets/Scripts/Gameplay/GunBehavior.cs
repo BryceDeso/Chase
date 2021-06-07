@@ -21,11 +21,11 @@ public class GunBehavior : MonoBehaviour
     public float TimeBetweenShots = 0f;
 
     [Tooltip("Holds a refernce to the top bullet emitters")]
-    public BulletEmitterBehavior TopEmitter;
+    public PlayerBulletEmitterBehavior TopEmitter;
     [Tooltip("Holds a refernce to the middle bullet emitters")]
-    public BulletEmitterBehavior MiddleEmitter;
+    public PlayerBulletEmitterBehavior MiddleEmitter;
     [Tooltip("Holds a refernce to the bottom bullet emitters")]
-    public BulletEmitterBehavior BottomEmitter;
+    public PlayerBulletEmitterBehavior BottomEmitter;
 
     private void Start()
     {
