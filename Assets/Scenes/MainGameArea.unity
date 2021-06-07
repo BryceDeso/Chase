@@ -646,8 +646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 0}
-  _gun: {fileID: 0}
+  _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
+  _gun: {fileID: 76706044}
   timesShot: 0
 --- !u!1 &191889691
 GameObject:
@@ -1161,8 +1161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 0}
-  _gun: {fileID: 0}
+  _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
+  _gun: {fileID: 76706044}
   timesShot: 0
 --- !u!4 &311467672
 Transform:
@@ -2404,8 +2404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 0}
-  _gun: {fileID: 0}
+  _bullet: {fileID: 5109855449448587874, guid: 048c1fc5d1600b64c85e8357ea71654a, type: 3}
+  _gun: {fileID: 76706044}
   timesShot: 0
 --- !u!4 &1015105563 stripped
 Transform:
