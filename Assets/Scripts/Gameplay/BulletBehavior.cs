@@ -27,7 +27,7 @@ public class BulletBehavior : MonoBehaviour
     /// <summary>
     /// Checks the object that entered the bullets collision radius then checks the objects tags.
     /// </summary>
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle"))
         {
@@ -36,10 +36,7 @@ public class BulletBehavior : MonoBehaviour
         //Checks if the player has collected the piercing shot powerup
         if(!shootPierce)
         {
-            if (other.CompareTag("Enemy"))
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 
