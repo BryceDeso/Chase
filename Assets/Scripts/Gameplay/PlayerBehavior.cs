@@ -31,13 +31,23 @@ public class PlayerBehavior : MonoBehaviour
     [Tooltip("How fast the bullet wil move")]
     public float _bulletSpeed;
 
-    [Tooltip("How many times the player can shoot with a the spreadshot power up")]
+    [Tooltip("How long the player can shoot with a the spreadshot power up")]
     [SerializeField]
-    private float _spreadPowerTimer;
+    private float _spreadShotMaxTime;
+    //Holds the number from _pierceShotMaxTime and subtracts it by deltatime for a timer.
+    [SerializeField]
+    private float _spreadShotTimer;
+    //Holds the rounded value of the spread shot timer for UI display.
+    private float _spreadSeconds;
 
-    [Tooltip("How many times the player can shoot with a the spreadshot power up")]
+    [Tooltip("How long the player can shoot with a the pierceingShot power up")]
     [SerializeField]
-    private float _piercePowerTimer;
+    private float _pierceShotMaxTime;
+    //Holds the number from _pierceShotMaxTime and subtracts it by deltatime for a timer.
+    [SerializeField]
+    private float _pierceShotTimer;
+    //Holds the rounded value of the _pierceShotTimer for UI usage.
+    private float _pierceSeconds;
 
     [Tooltip("The amount of time it takes to shoot again.")]
     [SerializeField]
@@ -59,8 +69,22 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Update()
     {
+        PlayerActions();
+        PowerUps();
+    }
+
+    //Funtions that holds player behaviors.
+    private void PlayerActions()
+    {
         PlayerRotate();
-        PowerUp();
+        PlayerTeleport();
+    }
+
+    //Funtions that holds behaviors for powerups.
+    private void PowerUps()
+    {
+        SpreadShot();
+        PiercingShot();
     }
 
     /// <summary>
@@ -91,8 +115,14 @@ public class PlayerBehavior : MonoBehaviour
 
             turnedLeft = false;
         }
-        //If the S key is pressed this frame and while nearTelporter is true, will set nearTeleporter
-        //to false and set the player's position to the the teleporter's receiver.
+    }
+
+    //If the S key is pressed this frame and while nearTelporter is true, will set nearTeleporter
+    //to false and set the player's position to the the teleporter's receiver.
+    private void PlayerTeleport()
+    {
+        var keyboard = Keyboard.current;
+
         if (keyboard.wKey.wasPressedThisFrame && nearTeleporter == true)
         {
             nearTeleporter = false;
@@ -106,68 +136,87 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    //Function that controls whether or not the powerups should still active.
-    private void PowerUp()
-    {
-        //Spread Behavior
-        if(canShootSpread)
-        {
-            if (_spreadPowerTimer >= 0)
-            {
-                _spreadPowerTimer -= Time.deltaTime;
-            }
 
-            if (_spreadPowerTimer <= 0)
+    /// <summary>
+    /// If canShootSpread is true, a timer will activate for the amount of time set by _spreadShotMaxTimer
+    /// as well as allow the player to shoot from the two hidden bullet emitters.
+    /// When the timer reaches zero it will turn off spreadshot.
+    /// </summary>
+    private void SpreadShot()
+    {
+        if (canShootSpread)
+        {
+            if (_spreadShotTimer >= 0)
             {
-                canShootSpread = false;
-                _spreadPowerTimer = 0;
-            }
-            else if (canShootSpread)
-            {
+                _spreadShotTimer -= Time.deltaTime;
+                _spreadSeconds = _spreadShotTimer % 60;
+
                 if (_delegateBehavior._playerControls.Player.Shoot.triggered)
                 {
                     TopEmitter.Shoot();
                     BottomEmitter.Shoot();
                 }
             }
-        }
 
-        //Pierce Behavior
-        if(canShootPierce)
-        {
-            if (_piercePowerTimer >= 0)
-            {
-                _piercePowerTimer -= Time.deltaTime;
-            }
-
-            if (_piercePowerTimer <= 0)
+            if (_spreadShotTimer <= 0)
             {
                 canShootSpread = false;
-                _piercePowerTimer = 0;
+                _spreadShotTimer = 0;
             }
         }
     }
 
     /// <summary>
-    /// //If the player is in the trigger of a game object tagged teleporter, it will set 
-    /// nearTeleporter to true and get that teleporter's TeleportBehavior.
+    /// If canShootPierce is true, this will set a variable called shootPierce in the bullet behavior to true, 
+    /// disabling the bullets destroying themselves on collision with an enemy, and begins a timer for how long 
+    /// the player will be able to shoot piering bullets When the timer ends it will disable piercing shot.. 
     /// </summary>
+    private void PiercingShot()
+    {
+        _pierceSeconds = _pierceShotTimer;
+
+        if (canShootPierce)
+        {
+            MiddleEmitter._bullet.shootPierce = true;
+
+            if (_pierceShotTimer >= 0)
+            {
+                _pierceShotTimer -= Time.deltaTime;
+                _pierceSeconds = _pierceShotTimer % 60;
+            }
+
+            if (_pierceShotTimer <= 0)
+            {
+                canShootPierce = false;
+                MiddleEmitter._bullet.shootPierce = false;
+                _pierceShotTimer = 0;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        // If the player is in the trigger of a game object tagged teleporter, it will set 
+        // nearTeleporter to true and get that teleporter's TeleportBehavior.
         if (other.CompareTag("Teleporter"))
         {
             nearTeleporter = true;
 
             _teleporter = other.GetComponent<TeleportBehavior>();
         }
+        //If the player collides with a gamobject tagged spreadshot, it will enable the spreadshot powerup
         else if (other.CompareTag("SpreadShot"))
         {
             canShootSpread = true;
+            _spreadShotTimer = _spreadShotMaxTime;
         }
+        //If the player collides with a gamobject tagged piercingshot, it will enable the piercingshot powerup.
         else if (other.CompareTag("PiercingShot"))
         {
             canShootPierce = true;
+            _pierceShotTimer = _pierceShotMaxTime;
         }
+        //If the player collides with a gamobject tagged bullet, it will destroy the player. 
         else if (other.CompareTag("Bullet"))
         {
             Destroy(gameObject);
