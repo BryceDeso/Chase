@@ -80,7 +80,7 @@ public class PlayerBehavior : MonoBehaviour
         PlayerTeleport();
     }
 
-    //Funtion that holds behaviors for powerups.
+    //Funtions that holds behaviors for powerups.
     private void PowerUps()
     {
         SpreadShot();
@@ -137,10 +137,13 @@ public class PlayerBehavior : MonoBehaviour
     }
 
 
-    //Function that controls whether or not the spreadshot powerup should still be active.
+    /// <summary>
+    /// If canShootSpread is true, a timer will activate for the amount of time set by _spreadShotMaxTimer
+    /// as well as allow the player to shoot from the two hidden bullet emitters.
+    /// When the timer reaches zero it will turn off spreadshot.
+    /// </summary>
     private void SpreadShot()
     {
-        //Spread Behavior
         if (canShootSpread)
         {
             if (_spreadShotTimer >= 0)
@@ -166,7 +169,7 @@ public class PlayerBehavior : MonoBehaviour
     /// <summary>
     /// If canShootPierce is true, this will set a variable called shootPierce in the bullet behavior to true, 
     /// disabling the bullets destroying themselves on collision with an enemy, and begins a timer for how long 
-    /// the player will be able to shoot piering bullets. 
+    /// the player will be able to shoot piering bullets When the timer ends it will disable piercing shot.. 
     /// </summary>
     private void PiercingShot()
     {
@@ -191,28 +194,29 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// //If the player is in the trigger of a game object tagged teleporter, it will set 
-    /// nearTeleporter to true and get that teleporter's TeleportBehavior.
-    /// </summary>
     private void OnTriggerEnter(Collider other)
     {
+        // If the player is in the trigger of a game object tagged teleporter, it will set 
+        // nearTeleporter to true and get that teleporter's TeleportBehavior.
         if (other.CompareTag("Teleporter"))
         {
             nearTeleporter = true;
 
             _teleporter = other.GetComponent<TeleportBehavior>();
         }
+        //If the player collides with a gamobject tagged spreadshot, it will enable the spreadshot powerup
         else if (other.CompareTag("SpreadShot"))
         {
             canShootSpread = true;
             _spreadShotTimer = _spreadShotMaxTime;
         }
+        //If the player collides with a gamobject tagged piercingshot, it will enable the piercingshot powerup.
         else if (other.CompareTag("PiercingShot"))
         {
             canShootPierce = true;
             _pierceShotTimer = _pierceShotMaxTime;
         }
+        //If the player collides with a gamobject tagged bullet, it will destroy the player. 
         else if (other.CompareTag("Bullet"))
         {
             Destroy(gameObject);
