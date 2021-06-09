@@ -60,7 +60,8 @@ public class PlayerBehavior : MonoBehaviour
     private void Update()
     {
         PlayerRotate();
-        PowerUp();
+        SpreadShot();
+        PiercingShot();
     }
 
     /// <summary>
@@ -106,15 +107,21 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    //Function that controls whether or not the powerups should still active.
-    private void PowerUp()
+    //Function that controls whether or not the spreadshot powerup should still be active.
+    private void SpreadShot()
     {
         //Spread Behavior
-        if(canShootSpread)
+        if (canShootSpread)
         {
             if (_spreadPowerTimer >= 0)
             {
                 _spreadPowerTimer -= Time.deltaTime;
+
+                if (_delegateBehavior._playerControls.Player.Shoot.triggered)
+                {
+                    TopEmitter.Shoot();
+                    BottomEmitter.Shoot();
+                }
             }
 
             if (_spreadPowerTimer <= 0)
@@ -122,19 +129,21 @@ public class PlayerBehavior : MonoBehaviour
                 canShootSpread = false;
                 _spreadPowerTimer = 0;
             }
-            else if (canShootSpread)
-            {
-                if (_delegateBehavior._playerControls.Player.Shoot.triggered)
-                {
-                    TopEmitter.Shoot();
-                    BottomEmitter.Shoot();
-                }
-            }
         }
+    }
 
-        //Pierce Behavior
+    /// <summary>
+    /// If canShootPierce is true, this will set a variable called shootPierce in the bullet behavior to true, 
+    /// disabling the bullets destroying themselves on collision with an enemy, and begins a timer for how long 
+    /// the player will be able to shoot piering bullets. Afer the timer is done it will set both varibles to 
+    /// false and the timer to 0.
+    /// </summary>
+    private void PiercingShot()
+    {
         if(canShootPierce)
         {
+            MiddleEmitter._bullet.shootPierce = true;
+
             if (_piercePowerTimer >= 0)
             {
                 _piercePowerTimer -= Time.deltaTime;
@@ -142,7 +151,8 @@ public class PlayerBehavior : MonoBehaviour
 
             if (_piercePowerTimer <= 0)
             {
-                canShootSpread = false;
+                canShootPierce = false;
+                MiddleEmitter._bullet.shootPierce = false;
                 _piercePowerTimer = 0;
             }
         }
@@ -163,10 +173,12 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("SpreadShot"))
         {
             canShootSpread = true;
+            _spreadPowerTimer = 15;
         }
         else if (other.CompareTag("PiercingShot"))
         {
             canShootPierce = true;
+            _piercePowerTimer = 15;
         }
         else if (other.CompareTag("Bullet"))
         {

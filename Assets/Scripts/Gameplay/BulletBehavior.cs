@@ -9,7 +9,7 @@ public class BulletBehavior : MonoBehaviour
     [SerializeField]
     private float _speed;
     [HideInInspector]
-    public bool canShootPierce;
+    public bool shootPierce;
 
     public Rigidbody Rigidbody
     {
@@ -34,7 +34,7 @@ public class BulletBehavior : MonoBehaviour
             Destroy(gameObject);
         }
         //Checks if the player has collected the piercing shot powerup
-        if(!canShootPierce)
+        if(!shootPierce)
         {
             if (other.CompareTag("Enemy"))
             {

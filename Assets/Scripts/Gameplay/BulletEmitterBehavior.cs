@@ -11,8 +11,17 @@ public class BulletEmitterBehavior : MonoBehaviour
     [SerializeField]
     private PlayerBehavior _player;
 
+    private float shootTimer;
+
+    //Holds whether or not the timer is currently active.
+    private bool activeTimer = false;
+
     //Holds a bool to determind wether or not you can shoot again.
     private bool canShoot = true;
+
+    private void Update()
+    {
+    }
 
     /// <summary>
     /// Creates an instance of the bullet and applies a force thats multiplied by _bulletSpeed, once the player has shot, 
@@ -24,6 +33,8 @@ public class BulletEmitterBehavior : MonoBehaviour
         if(canShoot == true)
         {
             canShoot = false;
+
+            activeTimer = true;
 
             Vector3 force = transform.forward * _player._bulletSpeed;
 
