@@ -358,12 +358,12 @@ PrefabInstance:
     - target: {fileID: 5894726517624192167, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: 4thFloorExit
+      value: 4thFloorExit (3F)
       objectReference: {fileID: 0}
     - target: {fileID: 5894726518134864471, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: TeleporterEnter
+      value: 4thFloorEnter (3F)
       objectReference: {fileID: 0}
     - target: {fileID: 6521227489351044831, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
@@ -1877,12 +1877,12 @@ PrefabInstance:
     - target: {fileID: 5894726517624192167, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: 2ndFloorExit
+      value: 2ndFloorExit (1F)
       objectReference: {fileID: 0}
     - target: {fileID: 5894726518134864471, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: TeleporterEnter
+      value: 2ndFloorEnter (1F)
       objectReference: {fileID: 0}
     - target: {fileID: 6521227489351044831, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
@@ -3487,12 +3487,12 @@ PrefabInstance:
     - target: {fileID: 5894726517624192167, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: 3rdFloorExit
+      value: 3rdFloorExit (4F)
       objectReference: {fileID: 0}
     - target: {fileID: 5894726518134864471, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: TeleporterEnter
+      value: 3rdFloorEnter (4F)
       objectReference: {fileID: 0}
     - target: {fileID: 6521227489351044831, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
@@ -3636,12 +3636,12 @@ PrefabInstance:
     - target: {fileID: 5894726517624192167, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: 2ndFloorExit
+      value: 2ndFloorExit (3F)
       objectReference: {fileID: 0}
     - target: {fileID: 5894726518134864471, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
       propertyPath: m_Name
-      value: TeleporterEnter
+      value: 2ndFloorEnter (3F)
       objectReference: {fileID: 0}
     - target: {fileID: 6521227489351044831, guid: c44aeda7600eff04eb62d6ead8cfefa1,
         type: 3}
@@ -4495,12 +4495,12 @@ PrefabInstance:
     - target: {fileID: 649778411791923827, guid: e9f9e19d235228841a1e332d5d5b08d5,
         type: 3}
       propertyPath: m_Name
-      value: 3rdFloorExit
+      value: 3rdFloorExit (2F)
       objectReference: {fileID: 0}
     - target: {fileID: 649778412352928899, guid: e9f9e19d235228841a1e332d5d5b08d5,
         type: 3}
       propertyPath: m_Name
-      value: 3rdFloorEnter
+      value: 3rdFloorEnter (2F)
       objectReference: {fileID: 0}
     - target: {fileID: 649778412352928900, guid: e9f9e19d235228841a1e332d5d5b08d5,
         type: 3}
@@ -4517,11 +4517,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -22
       objectReference: {fileID: 0}
+    - target: {fileID: 2519330830178253633, guid: e9f9e19d235228841a1e332d5d5b08d5,
+        type: 3}
+      propertyPath: m_Name
+      value: GroundFloorEnter (2F)
+      objectReference: {fileID: 0}
     - target: {fileID: 2519330830178253638, guid: e9f9e19d235228841a1e332d5d5b08d5,
         type: 3}
       propertyPath: teleportReciever
       value: 
       objectReference: {fileID: 1015105563}
+    - target: {fileID: 2519330830756003249, guid: e9f9e19d235228841a1e332d5d5b08d5,
+        type: 3}
+      propertyPath: m_Name
+      value: GroundFloorExit (2F)
+      objectReference: {fileID: 0}
     - target: {fileID: 3006220209766666185, guid: e9f9e19d235228841a1e332d5d5b08d5,
         type: 3}
       propertyPath: m_Icon
