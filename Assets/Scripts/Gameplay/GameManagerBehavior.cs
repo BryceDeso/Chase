@@ -7,8 +7,6 @@ public class GameManagerBehavior : MonoBehaviour
 {
     public bool gameOver;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +16,6 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while(!gameOver)
-        {
 
-        }
     }
 }
