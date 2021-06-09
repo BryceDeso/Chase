@@ -31,13 +31,23 @@ public class PlayerBehavior : MonoBehaviour
     [Tooltip("How fast the bullet wil move")]
     public float _bulletSpeed;
 
-    [Tooltip("How many times the player can shoot with a the spreadshot power up")]
+    [Tooltip("How long the player can shoot with a the spreadshot power up")]
     [SerializeField]
-    private float _spreadPowerTimer;
+    private float _spreadShotMaxTime;
+    //Holds the number from _pierceShotMaxTime and subtracts it by deltatime for a timer.
+    [SerializeField]
+    private float _spreadShotTimer;
+    //Holds the rounded value of the spread shot timer for UI display.
+    private float _spreadSeconds;
 
-    [Tooltip("How many times the player can shoot with a the spreadshot power up")]
+    [Tooltip("How long the player can shoot with a the pierceingShot power up")]
     [SerializeField]
-    private float _piercePowerTimer;
+    private float _pierceShotMaxTime;
+    //Holds the number from _pierceShotMaxTime and subtracts it by deltatime for a timer.
+    [SerializeField]
+    private float _pierceShotTimer;
+    //Holds the rounded value of the _pierceShotTimer for UI usage.
+    private float _pierceSeconds;
 
     [Tooltip("The amount of time it takes to shoot again.")]
     [SerializeField]
@@ -59,7 +69,20 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Update()
     {
+        PlayerActions();
+        PowerUps();
+    }
+
+    //Funtions that holds player behaviors.
+    private void PlayerActions()
+    {
         PlayerRotate();
+        PlayerTeleport();
+    }
+
+    //Funtion that holds behaviors for powerups.
+    private void PowerUps()
+    {
         SpreadShot();
         PiercingShot();
     }
@@ -92,8 +115,14 @@ public class PlayerBehavior : MonoBehaviour
 
             turnedLeft = false;
         }
-        //If the S key is pressed this frame and while nearTelporter is true, will set nearTeleporter
-        //to false and set the player's position to the the teleporter's receiver.
+    }
+
+    //If the S key is pressed this frame and while nearTelporter is true, will set nearTeleporter
+    //to false and set the player's position to the the teleporter's receiver.
+    private void PlayerTeleport()
+    {
+        var keyboard = Keyboard.current;
+
         if (keyboard.wKey.wasPressedThisFrame && nearTeleporter == true)
         {
             nearTeleporter = false;
@@ -107,15 +136,17 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+
     //Function that controls whether or not the spreadshot powerup should still be active.
     private void SpreadShot()
     {
         //Spread Behavior
         if (canShootSpread)
         {
-            if (_spreadPowerTimer >= 0)
+            if (_spreadShotTimer >= 0)
             {
-                _spreadPowerTimer -= Time.deltaTime;
+                _spreadShotTimer -= Time.deltaTime;
+                _spreadSeconds = _spreadShotTimer % 60;
 
                 if (_delegateBehavior._playerControls.Player.Shoot.triggered)
                 {
@@ -124,10 +155,10 @@ public class PlayerBehavior : MonoBehaviour
                 }
             }
 
-            if (_spreadPowerTimer <= 0)
+            if (_spreadShotTimer <= 0)
             {
                 canShootSpread = false;
-                _spreadPowerTimer = 0;
+                _spreadShotTimer = 0;
             }
         }
     }
@@ -135,25 +166,27 @@ public class PlayerBehavior : MonoBehaviour
     /// <summary>
     /// If canShootPierce is true, this will set a variable called shootPierce in the bullet behavior to true, 
     /// disabling the bullets destroying themselves on collision with an enemy, and begins a timer for how long 
-    /// the player will be able to shoot piering bullets. Afer the timer is done it will set both varibles to 
-    /// false and the timer to 0.
+    /// the player will be able to shoot piering bullets. 
     /// </summary>
     private void PiercingShot()
     {
-        if(canShootPierce)
+        _pierceSeconds = _pierceShotTimer;
+
+        if (canShootPierce)
         {
             MiddleEmitter._bullet.shootPierce = true;
 
-            if (_piercePowerTimer >= 0)
+            if (_pierceShotTimer >= 0)
             {
-                _piercePowerTimer -= Time.deltaTime;
+                _pierceShotTimer -= Time.deltaTime;
+                _pierceSeconds = _pierceShotTimer % 60;
             }
 
-            if (_piercePowerTimer <= 0)
+            if (_pierceShotTimer <= 0)
             {
                 canShootPierce = false;
                 MiddleEmitter._bullet.shootPierce = false;
-                _piercePowerTimer = 0;
+                _pierceShotTimer = 0;
             }
         }
     }
@@ -173,12 +206,12 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("SpreadShot"))
         {
             canShootSpread = true;
-            _spreadPowerTimer = 15;
+            _spreadShotTimer = _spreadShotMaxTime;
         }
         else if (other.CompareTag("PiercingShot"))
         {
             canShootPierce = true;
-            _piercePowerTimer = 15;
+            _pierceShotTimer = _pierceShotMaxTime;
         }
         else if (other.CompareTag("Bullet"))
         {

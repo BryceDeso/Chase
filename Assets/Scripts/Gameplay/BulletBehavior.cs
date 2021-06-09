@@ -9,7 +9,7 @@ public class BulletBehavior : MonoBehaviour
     [SerializeField]
     private float _speed;
     [HideInInspector]
-    public bool shootPierce;
+    public bool shootPierce = false;
 
     public Rigidbody Rigidbody
     {
