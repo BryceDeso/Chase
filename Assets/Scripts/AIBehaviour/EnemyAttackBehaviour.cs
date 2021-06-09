@@ -15,6 +15,6 @@ public class EnemyAttackBehaviour : MonoBehaviour
 
     public void Attack()
     {
-        weapon.GetComponent<PlayerBulletEmitterBehavior>().Shoot();
+        weapon.GetComponent<BulletEmitterBehavior>().Shoot();
     }
 }

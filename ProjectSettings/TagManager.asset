@@ -4,13 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SpreadShot
+  - Obstacle
+  - Enemy
   - Patrol Point
   - Wander
   - Teleporter
   - Gun
-  - Enemy
-  - Collectables
   layers:
   - Default
   - TransparentFX
@@ -20,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 

@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBulletEmitterBehavior : MonoBehaviour
+public class BulletEmitterBehavior : MonoBehaviour
 {
     [Tooltip("Refernce to the bullet")]
-    public BulletBehavior _bullet;
-
-    [Tooltip("Reference to the gun the emitter is attatched to")]
     [SerializeField]
-    private PlayerBehavior _player;
-
+    private GameObject _bullet;
+    [Tooltip("How fast the bullet wil move")]
+    public float _bulletSpeed;
+    [Tooltip("The amount of time it takes to shoot again.")]
+    [SerializeField]
+    private float TimeBetweenShots = 0f;
     //Holds a bool to determind wether or not you can shoot again.
     private bool canShoot = true;
 
@@ -25,18 +26,20 @@ public class PlayerBulletEmitterBehavior : MonoBehaviour
         {
             canShoot = false;
 
-            Vector3 force = transform.forward * _player._bulletSpeed;
+            Vector3 force = transform.forward * _bulletSpeed;
 
-            GameObject bulletFired = Instantiate(_bullet.gameObject, transform.position, transform.rotation);
-
+            GameObject bulletFired = Instantiate(_bullet, transform.position, transform.rotation);
             BulletBehavior bulletscript = bulletFired.GetComponent<BulletBehavior>();
-
+            EnemyBulletBehaviour enemyBulletScript = bulletFired.GetComponent<EnemyBulletBehaviour>();
             if (bulletscript)
             {
                 bulletscript.Rigidbody.AddForce(force, ForceMode.Impulse);
             }
-
-            Invoke("CanShoot", _player.TimeBetweenShots);
+            if(enemyBulletScript)
+            {
+                enemyBulletScript.Rigidbody.AddForce(force, ForceMode.Impulse);
+            }
+            Invoke("CanShoot", TimeBetweenShots);
         }
     }
 
