@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletEmitterBehavior : MonoBehaviour
+public class PlayerBulletEmitterBehavior : MonoBehaviour
 {
     [Tooltip("Refernce to the bullet")]
     public BulletBehavior _bullet;
