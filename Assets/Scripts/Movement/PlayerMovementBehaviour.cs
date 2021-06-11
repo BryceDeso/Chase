@@ -18,6 +18,14 @@ public class PlayerMovementBehaviour : MonoBehaviour
     //A reference of a Vector3
     private Vector3 _velocity;
 
+    [HideInInspector]
+    //A variable that stores the value of points earned by the player
+    public int score;
+
+    [HideInInspector]
+    //A reference to the text UI
+    public Text scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
