@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementBehaviour : MonoBehaviour
 {
+    private PlayerControls _playerControls;
+
+
     //A reference to the rigidbody component
     private Rigidbody _rigidbody;
 
@@ -24,14 +27,13 @@ public class PlayerMovementBehaviour : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        score = 0;
-        SetScoreText();
     }
 
     public void Move(Vector3 direction)
     {
         _velocity = direction * moveSpeed * Time.deltaTime;
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -60,4 +62,5 @@ public class PlayerMovementBehaviour : MonoBehaviour
             SetScoreText();
         }
     }
+
 }

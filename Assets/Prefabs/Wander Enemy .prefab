@@ -113,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &7127028470100108425
 MonoBehaviour:
@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9149037922393908424}
-  - component: {fileID: 2990010651752922044}
+  - component: {fileID: 2077967193629258161}
   m_Layer: 0
   m_Name: BulletEmitter
   m_TagString: Untagged
@@ -193,7 +193,7 @@ Transform:
   m_Father: {fileID: 1130785978414891605}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2990010651752922044
+--- !u!114 &2077967193629258161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3569693152248774173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f631c81f02d6ef4d8b2538d2c48ef4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 984f270dfd734a14892d7454f2eb3bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 8250999762413452362, guid: fca2c0443a2940f4195c7f61524db358, type: 3}
   _bulletSpeed: 5
-  TimeBetweenShots: 0.5
+  TimeBetweenShots: 1
