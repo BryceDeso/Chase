@@ -16,19 +16,12 @@ public class PauseMenuBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PauseMenu();
+        PauseGame();
     }
 
-    private void PauseMenu()
-    {
-        ContinueGame();
-        GoBackToMenu();
-    }
-
-    private void ContinueGame()
+    public void PauseGame()
     {
         var keyboard = Keyboard.current;
-
         /// If the game is not in a paused state, and the player hits the escape key, it will set gamePaused to true and
         /// enable the pause menu UI.
         if (keyboard.escapeKey.wasPressedThisFrame && gamePaused == false)
@@ -36,9 +29,14 @@ public class PauseMenuBehavior : MonoBehaviour
             pauseMenu.gameObject.SetActive(true);
             gamePaused = true;
         }
+
+    }
+
+    public void UnPauseGame()
+    {
         /// If the game is in a paused state, and the player hits the escape key, it will set gamePaused to false and
         /// disable the pause menu UI.
-        else if (keyboard.escapeKey.wasPressedThisFrame && gamePaused == true)
+        if (gamePaused == true)
         {
             pauseMenu.gameObject.SetActive(false);
             gamePaused = false;
@@ -46,11 +44,9 @@ public class PauseMenuBehavior : MonoBehaviour
     }
 
     //If the game is paused and the space key was pressed, it will take the player back to the start menu.
-    private void GoBackToMenu()
+    public void GoBackToMenu()
     {
-        var keyboard = Keyboard.current;
-
-        if(keyboard.spaceKey.wasPressedThisFrame && gamePaused == true)
+        if(gamePaused == true)
         {
             SceneManager.LoadScene("StartMenu");
             gamePaused = false;
