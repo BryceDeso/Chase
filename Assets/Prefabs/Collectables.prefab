@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7171340104238497162}
   - component: {fileID: 4191161358540675535}
   - component: {fileID: 2464994775267223723}
+  - component: {fileID: 2800692588072715237}
   m_Layer: 0
   m_Name: Collectables
-  m_TagString: Untagged
+  m_TagString: Collectables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7171340104238497165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.181, z: -7.89}
-  m_LocalScale: {x: 0.55951, y: 0.10421314, z: 0.27703}
+  m_LocalScale: {x: 0.55951, y: 0.123072326, z: 0.27703}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -122,4 +123,16 @@ Halo:
   m_Color:
     serializedVersion: 2
     rgba: 4279082057
-  m_Size: 0.3
+  m_Size: 0.39
+--- !u!114 &2800692588072715237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171340104238497165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba2e70436f7aea44bc80c851051fec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

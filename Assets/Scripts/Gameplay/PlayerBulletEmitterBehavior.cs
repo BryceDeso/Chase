@@ -9,27 +9,39 @@ public class PlayerBulletEmitterBehavior : MonoBehaviour
 
     [Tooltip("Reference to the gun the emitter is attatched to")]
     [SerializeField]
-    private GunBehavior _gun;
+    private PlayerBehavior _player;
 
-    //Holds the amount of times the player has shot(This is used for power ups and is reset when max
-    //amount of shots has been reached for a power up)
-    public float timesShot;
+    [SerializeField]
+    private float shootTimer;
 
     //Holds a bool to determind wether or not you can shoot again.
+    [SerializeField]
     private bool canShoot = true;
 
+    [SerializeField]
+    private bool activeTimer = false;
+
+    private void Update()
+    {
+        if(activeTimer)
+        {
+            Timer();
+        }
+    }
+
     /// <summary>
-    /// Creates an instance of the bullet and applies a force thats multiplied by _bulletSpeed, once the player has shot, 
-    /// canShoot is set to false and a timer is set using Invoke and after a certain amount of time the 
-    /// funtion canShoot is invoked and sets canShoot to true enabling the player to shoot again.
+    /// Creates an instance of the bullet and applies a force thats multiplied by _bulletSpeed
+    /// then sets the timer to active, disabling player shooting for the timer duration.
     /// </summary>
     public void Shoot()
     {
         if(canShoot == true)
         {
+            shootTimer = _player.TimeBetweenShots;
+
             canShoot = false;
 
-            Vector3 force = transform.forward * _gun._bulletSpeed;
+            Vector3 force = transform.forward * _player._bulletSpeed;
 
             GameObject bulletFired = Instantiate(_bullet.gameObject, transform.position, transform.rotation);
 
@@ -40,14 +52,24 @@ public class PlayerBulletEmitterBehavior : MonoBehaviour
                 bulletscript.Rigidbody.AddForce(force, ForceMode.Impulse);
             }
 
-            timesShot++;
-
-            Invoke("CanShoot", _gun.TimeBetweenShots);
+            activeTimer = true;
         }
     }
 
-    private void CanShoot()
+    //Sets a timer for the amount set by TimeBetweenShots, disabling player shooting during that time.
+    //Then when the timer is up, it will allow the player to shoot again.
+    private void Timer()
     {
-        canShoot = true;
+        if (shootTimer >= 0)
+        {
+            shootTimer -= Time.deltaTime;
+
+            if (shootTimer <= 0)
+            {
+                canShoot = true;
+                activeTimer = false;
+                shootTimer = 0;
+            }
+        }
     }
 }

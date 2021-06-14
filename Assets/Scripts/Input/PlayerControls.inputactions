@@ -87,6 +87,21 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "5e5d367d-3a36-4716-a5cc-144ada129777",
+            "actions": [
+                {
+                    "name": "Mouse",
+                    "type": "Value",
+                    "id": "22ac0a2f-e551-4036-a24d-a5f1ed886a88",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": []
         }
     ],
     "controlSchemes": []
