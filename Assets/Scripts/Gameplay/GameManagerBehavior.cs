@@ -31,6 +31,7 @@ public class GameManagerBehavior : MonoBehaviour
             if(lifesRef.lifes == 0 || _player == null)
             {
                 gameOver = true;
+                RestartGame();
             }
         }
     }

@@ -56,7 +56,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Collectables"))
         {
-            other.gameObject.SetActive(false);
             Destroy(other);
             SetScoreText();
         }
