@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class StartMenuBehavior : MonoBehaviour
 {
-    //If space is pressed start game.
     public void StartGame()
     {
         SceneManager.LoadScene("BryceTest");

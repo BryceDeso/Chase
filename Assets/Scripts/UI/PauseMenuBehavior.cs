@@ -29,12 +29,11 @@ public class PauseMenuBehavior : MonoBehaviour
             pauseMenu.gameObject.SetActive(true);
             gamePaused = true;
         }
-
     }
 
     public void UnPauseGame()
     {
-        /// If the game is in a paused state, and the player hits the escape key, it will set gamePaused to false and
+        /// If the game is in a paused state, and the player hits the Resume button, it will set gamePaused to false and
         /// disable the pause menu UI.
         if (gamePaused == true)
         {
@@ -43,7 +42,7 @@ public class PauseMenuBehavior : MonoBehaviour
         }
     }
 
-    //If the game is paused and the space key was pressed, it will take the player back to the start menu.
+    //If the game is paused and the Exit button was pressed, it will take the player back to the start menu.
     public void GoBackToMenu()
     {
         if(gamePaused == true)
