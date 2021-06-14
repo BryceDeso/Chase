@@ -10,7 +10,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour
 
     [Tooltip("Set the enemy's target")]
     [SerializeField]
-    private GameObject _target;
+    private Transform _target;
 
     [Tooltip("Set's the patrol points for the enemy")]
     [SerializeField]
