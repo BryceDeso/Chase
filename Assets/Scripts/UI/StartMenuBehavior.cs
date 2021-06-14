@@ -9,20 +9,28 @@ public class StartMenuBehavior : MonoBehaviour
     private void Update()
     {
         StartGame();
+        ExitGame();
     }
 
+    //If space is pressed start game.
     public void StartGame()
     {
         var keyboard = Keyboard.current;
 
-        if(keyboard.anyKey.wasPressedThisFrame)
+        if(keyboard.spaceKey.wasPressedThisFrame)
         {
             SceneManager.LoadScene("BryceTest");
         }
     }
 
+    //If escape key is press quit game.
     public void ExitGame()
     {
-        Application.Quit();
+        var keyboard = Keyboard.current;
+
+        if(keyboard.escapeKey.wasPressedThisFrame)
+        {
+            Application.Quit();
+        }
     }
 }
