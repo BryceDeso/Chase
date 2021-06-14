@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerMovementBehaviour : MonoBehaviour
@@ -18,8 +17,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [HideInInspector]
     //A variable that stores the value of points earned by the player
     public int score;
-
-    [HideInInspector]
     //A reference to the text UI
     public Text scoreText;
 

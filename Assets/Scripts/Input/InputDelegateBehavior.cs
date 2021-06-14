@@ -8,7 +8,6 @@ public class InputDelegateBehavior : MonoBehaviour
     public PlayerControls _playerControls;
     [SerializeField]
     private PlayerBehavior _player;
-
     private PlayerMovementBehaviour _playerMovement;
     
     private void Awake()
