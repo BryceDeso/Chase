@@ -106,15 +106,27 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""id"": ""5e5d367d-3a36-4716-a5cc-144ada129777"",
             ""actions"": [
                 {
-                    ""name"": ""Mouse"",
+                    ""name"": ""Pause"",
                     ""type"": ""Value"",
-                    ""id"": ""22ac0a2f-e551-4036-a24d-a5f1ed886a88"",
-                    ""expectedControlType"": """",
+                    ""id"": ""dab219ac-955d-49e7-8a7c-cfa6a63e1bef"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
             ],
-            ""bindings"": []
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""74fb09df-5d28-459e-b130-2ef250730742"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -126,7 +138,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Mouse = m_UI.FindAction("Mouse", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,12 +237,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Mouse;
+    private readonly InputAction m_UI_Pause;
     public struct UIActions
     {
         private @PlayerControls m_Wrapper;
         public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Mouse => m_Wrapper.m_UI_Mouse;
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -240,16 +252,16 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @Mouse.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouse;
-                @Mouse.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouse;
-                @Mouse.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouse;
+                @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Mouse.started += instance.OnMouse;
-                @Mouse.performed += instance.OnMouse;
-                @Mouse.canceled += instance.OnMouse;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -262,6 +274,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     }
     public interface IUIActions
     {
-        void OnMouse(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -93,15 +93,27 @@
             "id": "5e5d367d-3a36-4716-a5cc-144ada129777",
             "actions": [
                 {
-                    "name": "Mouse",
+                    "name": "Pause",
                     "type": "Value",
-                    "id": "22ac0a2f-e551-4036-a24d-a5f1ed886a88",
-                    "expectedControlType": "",
+                    "id": "dab219ac-955d-49e7-8a7c-cfa6a63e1bef",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
             ],
-            "bindings": []
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "74fb09df-5d28-459e-b130-2ef250730742",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

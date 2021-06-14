@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerMovementBehaviour : MonoBehaviour
 {
     private PlayerControls _playerControls;
@@ -21,8 +20,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [HideInInspector]
     //A variable that stores the value of points earned by the player
     public int score;
-
-    [HideInInspector]
     //A reference to the text UI
     public Text scoreText;
 
@@ -39,9 +36,31 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
 
     // Update is called once per frame
-
     void FixedUpdate()
     {
         _rigidbody.MovePosition(transform.position + _velocity);
     }
+
+    /// <summary>
+    /// A function that displays the number of collectables found
+    /// </summary>
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
+        score += 5;
+    }
+
+    /// <summary>
+    /// A function that checks if the player has collided with the collectables and sets the collectables to false and collects them
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Collectables"))
+        {
+            Destroy(other);
+            SetScoreText();
+        }
+    }
+
 }

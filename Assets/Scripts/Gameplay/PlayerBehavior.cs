@@ -12,7 +12,6 @@ public class PlayerBehavior : MonoBehaviour
     //Used tell which way the player is facing.
     private bool turnedRight = false;
     private bool turnedLeft = false;
-
     private bool nearTeleporter;
 
     private InputDelegateBehavior _delegateBehavior;
@@ -210,6 +209,10 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("Bullet"))
         {
             Destroy(gameObject);
+            if(gameObject == CompareTag("Player"))
+            {
+                lifes -= 1;
+            }
         }
     }
 
