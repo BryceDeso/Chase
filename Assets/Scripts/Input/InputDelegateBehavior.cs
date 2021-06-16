@@ -30,6 +30,7 @@ public class InputDelegateBehavior : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
         _playerControls.Player.Shoot.performed += context => _player.MiddleEmitter.Shoot();
+        _playerControls.Player.Jump.performed += context => _playerMovement.Jump();
     }
 
     void FixedUpdate()
