@@ -5,11 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovementBehaviour : MonoBehaviour
 {
-    private PlayerControls _playerControls;
+    [SerializeField]
+    private PlayerBehavior _player;
 
-    //Used tell which way the player is facing.
-    private bool turnedRight = false;
-    private bool turnedLeft = false;
+    private InputDelegateBehavior _inputDelegate;
+
+    //Good jump value is 200
+    [Tooltip("How high the player can jump")]
+    [SerializeField]
+    private float _jumpForce;
 
     //A reference to the rigidbody component
     private Rigidbody _rigidbody;
@@ -23,6 +27,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _inputDelegate = GetComponent<InputDelegateBehavior>();
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -31,8 +36,25 @@ public class PlayerMovementBehaviour : MonoBehaviour
         _velocity = direction * moveSpeed * Time.deltaTime;
     }
 
+    private void Update()
+    {
+        Jump();
+    }
+
     void FixedUpdate()
     {
         _rigidbody.MovePosition(transform.position + _velocity);
+    }
+
+    //If the player is on the ground and has pressed the jump button, it will apply an upward force.
+    public void Jump()
+    {
+        if (_player.onGround == true)
+        {
+            if(_inputDelegate._playerControls.Player.Jump.triggered)
+            {
+                _rigidbody.AddForce(new Vector3(0, _jumpForce, 0));
+            }
+        }
     }
 }
