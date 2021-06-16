@@ -33,6 +33,11 @@ public class BulletBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(other.CompareTag("Wander"))
+        {
+            Destroy(other);
+        }
+
         //Checks if the player has collected the piercing shot powerup
         if (!shootPierce)
         {
