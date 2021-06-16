@@ -10,6 +10,9 @@ TagManager:
   - Wander
   - Teleporter
   - Gun
+  - SpreadShot
+  - PiercingShot
+  - Collectables
   layers:
   - Default
   - TransparentFX

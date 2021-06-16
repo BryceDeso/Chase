@@ -20,7 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     [HideInInspector]
     public int score = 0;
     [HideInInspector]
-    public int lifes = 0;
+    public int lifes = 3;
 
     private bool nearTeleporter;
 
@@ -219,9 +219,14 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("Bullet"))
         {
             Destroy(gameObject);
+            if(gameObject == CompareTag("Player"))
+            {
+                lifes -= 1;
+            }
         }
         else if (other.CompareTag("Collectables"))
         {
+            other.gameObject.SetActive(false);
             score += 20;
         }
     }

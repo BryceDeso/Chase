@@ -7,12 +7,12 @@ public class GameManagerBehavior : MonoBehaviour
 {
     //A reference to the lifes variable in PlayerBehaviour
     public PlayerBehavior lifesRef;
-    private PlayerBehavior _player;
+    private PlayerBehavior PlayerRef;
     public bool gameOver;
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainGame");
     }
 
     public void QuitGame()
@@ -28,7 +28,7 @@ public class GameManagerBehavior : MonoBehaviour
             lifesRef.lifes = 3;
 
 
-            if(lifesRef.lifes == 0 || _player == null)
+            if(lifesRef.lifes == 0 && PlayerRef == null)
             {
                 gameOver = true;
                 RestartGame();
