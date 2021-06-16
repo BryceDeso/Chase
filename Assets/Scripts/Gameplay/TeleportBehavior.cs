@@ -11,7 +11,7 @@ public class TeleportBehavior : MonoBehaviour
     //once an actor enters the area it'll teleport them to the recieveing teleporter
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wander") || other.CompareTag("Player"))
+        if (other.CompareTag("Wander"))
             other.transform.position = teleportReciever.transform.position;
 
         return;

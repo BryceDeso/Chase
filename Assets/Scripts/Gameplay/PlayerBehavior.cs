@@ -7,8 +7,6 @@ public class PlayerBehavior : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
-    private PlayerControls _playerControls;
-
     //Used to say if a power up has been collected and which one was collected
     public bool canShootSpread = false;
     public bool canShootPierce = false;
@@ -22,11 +20,14 @@ public class PlayerBehavior : MonoBehaviour
     [HideInInspector]
     public int lifes = 0;
 
-    private bool nearTeleporter;
+    private bool nearTeleporter = false;
 
     private InputDelegateBehavior _delegateBehavior;
 
     private TeleportBehavior _teleporter;
+
+    //Used to tell if the player is in the air or on the ground.
+    public bool onGround;
 
     [Tooltip("How fast the bullet wil move")]
     public float _bulletSpeed;
@@ -193,6 +194,14 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            onGround = true;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // If the player is in the trigger of a game object tagged teleporter, it will set 
@@ -227,6 +236,14 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("Collectables"))
         {
             score += 20;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            onGround = false;
         }
     }
 
