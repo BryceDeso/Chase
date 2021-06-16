@@ -72,6 +72,5 @@ public class EnemyVisionBehaviour : MonoBehaviour
                 GetComponent<EnemyMovementBehvaiour>().MovementSpeed = resetMovementSpeed;
 
         }
-        Debug.Log(Target.position);
     }
 }
