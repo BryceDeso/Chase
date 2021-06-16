@@ -9,9 +9,19 @@ public class PlayerBehavior : MonoBehaviour
 
     private PlayerControls _playerControls;
 
+    //Used to say if a power up has been collected and which one was collected
+    public bool canShootSpread = false;
+    public bool canShootPierce = false;
+
     //Used tell which way the player is facing.
     private bool turnedRight = false;
     private bool turnedLeft = false;
+
+    [HideInInspector]
+    public int score = 0;
+    [HideInInspector]
+    public int lifes = 0;
+
     private bool nearTeleporter;
 
     private InputDelegateBehavior _delegateBehavior;
@@ -54,6 +64,7 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _delegateBehavior = GetComponent<InputDelegateBehavior>();
     }
 
     private void Update()
@@ -80,7 +91,7 @@ public class PlayerBehavior : MonoBehaviour
     /// This gets if the player has pressed the A or D keys and will set the player 
     /// gameobject's rotation to 0 or 180 to simulate turning left or right.
     /// </summary>
-    void Update()
+    void PlayerRotate()
     {
         var keyboard = Keyboard.current;
 
@@ -208,12 +219,8 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("Bullet"))
         {
             Destroy(gameObject);
-            if(gameObject == CompareTag("Player"))
-            {
-                lifes -= 1;
-            }
         }
-        else if(other.CompareTag("Collectables"))
+        else if (other.CompareTag("Collectables"))
         {
             score += 20;
         }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class InputDelegateBehavior : MonoBehaviour
 {
-    private PlayerControls _playerControls;
+    public PlayerControls _playerControls;
     [SerializeField]
     private PlayerMovementBehaviour _playerMovement;
+
+    private PlayerBehavior _player;
 
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class InputDelegateBehavior : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
-        _playerControls.Player.Shoot.performed += context => _bulletEmitter.Shoot();
+        _playerControls.Player.Shoot.performed += context => _player.MiddleEmitter.Shoot();
     }
 
     void FixedUpdate()
