@@ -125,7 +125,6 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// If canShootSpread is true, a timer will activate for the amount of time set by _spreadShotMaxTimer
     /// as well as allow the player to shoot from the two hidden bullet emitters.
@@ -213,6 +212,10 @@ public class PlayerBehavior : MonoBehaviour
             {
                 lifes -= 1;
             }
+        }
+        else if(other.CompareTag("Collectables"))
+        {
+            score += 20;
         }
     }
 
