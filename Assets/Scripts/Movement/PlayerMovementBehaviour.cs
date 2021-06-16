@@ -36,7 +36,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
         _velocity = direction * moveSpeed * Time.deltaTime;
     }
 
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -47,12 +46,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
     //If the player is on the ground and has pressed the jump button, it will apply an upward force.
     public void Jump()
     {
-        if (_player.onGround == true)
+        if (_player.onGround == true && _inputDelegate._playerControls.Player.Jump.triggered)
         {
-            if(_inputDelegate._playerControls.Player.Jump.triggered)
-            {
-                _rigidbody.AddForce(new Vector3(0, _jumpForce, 0));
-            }
+            _rigidbody.AddForce(new Vector3(0, _jumpForce, 0));
         }
     }
 }

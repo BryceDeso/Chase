@@ -20,7 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     [HideInInspector]
     public int lifes = 0;
 
-    private bool nearTeleporter;
+    private bool nearTeleporter = false;
 
     private InputDelegateBehavior _delegateBehavior;
 

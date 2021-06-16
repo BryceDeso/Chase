@@ -211,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: 30, z: 0}
 --- !u!1 &94609675
 GameObject:
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -406,7 +406,7 @@ GameObject:
   m_Layer: 0
   m_Name: TeleporterOut
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
@@ -441,7 +441,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ce597fb1b18f9499e6b8d21cb3ad70, type: 2}
+  - {fileID: 2100000, guid: aa86ea5ff1b45ce4d8e2cbe46b8419bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -482,7 +482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &255905636
 PrefabInstance:
@@ -505,6 +505,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spreadshot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460434016196494225, guid: c08036622e889c04f8c0bd85d6391e79,
+        type: 3}
+      propertyPath: m_TagString
+      value: PiercingShot
       objectReference: {fileID: 0}
     - target: {fileID: 8970406329380299993, guid: c08036622e889c04f8c0bd85d6391e79,
         type: 3}
@@ -544,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 8970406329380299993, guid: c08036622e889c04f8c0bd85d6391e79,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8970406329380299993, guid: c08036622e889c04f8c0bd85d6391e79,
         type: 3}
@@ -633,12 +638,12 @@ PrefabInstance:
     - target: {fileID: 5104729875637832524, guid: a2541396639ddd748869703bd956d00f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.7
+      value: -13.52
       objectReference: {fileID: 0}
     - target: {fileID: 5104729875637832524, guid: a2541396639ddd748869703bd956d00f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.02
+      value: 9.84
       objectReference: {fileID: 0}
     - target: {fileID: 5104729875637832524, guid: a2541396639ddd748869703bd956d00f,
         type: 3}
@@ -1074,7 +1079,7 @@ Transform:
   - {fileID: 1317509414}
   - {fileID: 1580110968}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &748911185
 MonoBehaviour:
@@ -1089,7 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShootSpread: 0
-  canShootPierce: 1
+  canShootPierce: 0
   score: 0
   lifes: 0
   onGround: 0
@@ -1128,7 +1133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 748911185}
-  _jumpForce: 200
+  _jumpForce: 350
   moveSpeed: 10
 --- !u!54 &748911189
 Rigidbody:
@@ -1179,8 +1184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportReciever: {fileID: 1691303068}
-  actor: {fileID: 0}
-  timer: 0
 --- !u!65 &787916640
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1427,7 +1430,7 @@ RectTransform:
   - {fileID: 1511505574}
   - {fileID: 102486169}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1844,7 +1847,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ce597fb1b18f9499e6b8d21cb3ad70, type: 2}
+  - {fileID: 2100000, guid: aa86ea5ff1b45ce4d8e2cbe46b8419bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1885,7 +1888,7 @@ Transform:
   m_LocalScale: {x: 2.536142, y: 0.44833434, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1132855625
 MonoBehaviour:
@@ -1900,8 +1903,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportReciever: {fileID: 143615253}
-  actor: {fileID: 0}
-  timer: 0
 --- !u!1 &1212830242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564bfa79772c07b43a50b4a93f1b658a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifesRef: {fileID: 0}
   gameOver: 0
 --- !u!4 &1215801193
 Transform:
@@ -2037,7 +2039,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225494725
 GameObject:
@@ -2403,7 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2672,7 +2674,7 @@ GameObject:
   m_Layer: 0
   m_Name: TeleporterOut2
   m_TagString: Teleporter
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
@@ -2763,8 +2765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportReciever: {fileID: 0}
-  actor: {fileID: 0}
-  timer: 0
 --- !u!1 &2091453346
 GameObject:
   m_ObjectHideFlags: 0
