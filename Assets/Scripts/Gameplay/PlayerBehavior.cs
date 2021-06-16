@@ -219,6 +219,10 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("Bullet"))
         {
             Destroy(gameObject);
+            if(gameObject == CompareTag("Player"))
+            {
+                lifes -= 1;
+            }
         }
         else if (other.CompareTag("Collectables"))
         {
