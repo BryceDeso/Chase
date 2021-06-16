@@ -10,7 +10,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private InputDelegateBehavior _inputDelegate;
 
-    //Good jump value is 200
+    //Good jump value is 350
     [Tooltip("How high the player can jump")]
     [SerializeField]
     private float _jumpForce;
@@ -36,14 +36,10 @@ public class PlayerMovementBehaviour : MonoBehaviour
         _velocity = direction * moveSpeed * Time.deltaTime;
     }
 
-    private void Update()
-    {
-        Jump();
-    }
-
     void FixedUpdate()
     {
-        _rigidbody.MovePosition(transform.position + _velocity);
+        _rigidbody.MovePosition(transform.position + _velocity); 
+        Jump();
     }
 
     //If the player is on the ground and has pressed the jump button, it will apply an upward force.
