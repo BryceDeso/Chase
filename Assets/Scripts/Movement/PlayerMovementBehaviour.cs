@@ -10,11 +10,12 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private InputDelegateBehavior _inputDelegate;
 
-    //Good jump value is 4
+    //Good jump value is 3
     [Tooltip("How high the player can jump")]
     [SerializeField]
     private float _jumpForce;
 
+    //A vector3 that is will be scaled by its Y axis for jumping.
     private Vector3 _jump = new Vector3(0, 1, 0);
 
     //A reference to the rigidbody component
