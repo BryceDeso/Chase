@@ -10,10 +10,13 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private InputDelegateBehavior _inputDelegate;
 
-    //Good jump value is 350
+    //Good jump value is 3
     [Tooltip("How high the player can jump")]
     [SerializeField]
     private float _jumpForce;
+
+    //A vector3 that is will be scaled by its Y axis for jumping.
+    private Vector3 _jump = new Vector3(0, 1, 0);
 
     //A reference to the rigidbody component
     private Rigidbody _rigidbody;
@@ -36,11 +39,14 @@ public class PlayerMovementBehaviour : MonoBehaviour
         _velocity = direction * moveSpeed * Time.deltaTime;
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        Jump();
+    }
+
     void FixedUpdate()
     {
-        _rigidbody.MovePosition(transform.position + _velocity); 
-        Jump();
+        _rigidbody.MovePosition(transform.position + _velocity);
     }
 
     //If the player is on the ground and has pressed the jump button, it will apply an upward force.
@@ -48,7 +54,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     {
         if (_player.onGround == true && _inputDelegate._playerControls.Player.Jump.triggered)
         {
-            _rigidbody.AddForce(new Vector3(0, _jumpForce, 0));
+            _rigidbody.AddForce(_jump * _jumpForce, ForceMode.Impulse);
         }
     }
 }
