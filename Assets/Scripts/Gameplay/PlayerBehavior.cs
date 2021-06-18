@@ -206,7 +206,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         // If the player is in the trigger of a game object tagged teleporter, it will set 
         // nearTeleporter to true and get that teleporter's TeleportBehavior.
-        if (other.CompareTag("Teleporter"))
+        if (other.CompareTag("Patrol Point"))
         {
             nearTeleporter = true;
 
