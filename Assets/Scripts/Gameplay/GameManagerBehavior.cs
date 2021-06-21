@@ -31,6 +31,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             if(_player.lifes <= 0)
             {
+                _player.lifes = 0;
                 _playerLoseMenu.playerLost = true;
                 gameOver = true;
             }

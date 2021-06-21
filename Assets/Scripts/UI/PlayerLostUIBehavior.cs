@@ -30,7 +30,7 @@ public class PlayerLostUIBehavior : MonoBehaviour
     //If the player lost, and the player hits the Restart button, it will restart the game.
     public void RestartGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(1);
         playerLost = false;
 
     }
@@ -40,7 +40,7 @@ public class PlayerLostUIBehavior : MonoBehaviour
     {
         if (playerLost == true)
         {
-            SceneManager.LoadScene("StartMenu");
+            SceneManager.LoadScene(0);
             playerLost = false;
         }
     }
