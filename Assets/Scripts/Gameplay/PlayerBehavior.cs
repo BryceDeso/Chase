@@ -54,6 +54,10 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField]
     public float TimeBetweenShots = 0f;
 
+    [Tooltip("A refernce to an empty gameobject, will set the player's position to the gameobject when the player dies.")]
+    [SerializeField]
+    private GameObject _spawnPoint;
+
     [Tooltip("Holds a refernce to the top bullet emitters")]
     public PlayerBulletEmitterBehavior TopEmitter;
     [Tooltip("Holds a refernce to the middle bullet emitters")]
@@ -194,6 +198,12 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    //Sets the player's position to the spawnpoints position;
+    private void Respawn()
+    {
+        gameObject.transform.position = _spawnPoint.transform.position;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
@@ -224,14 +234,12 @@ public class PlayerBehavior : MonoBehaviour
             canShootPierce = true;
             _pierceShotTimer = _pierceShotMaxTime;
         }
-        //If the player collides with a gamobject tagged bullet, it will destroy the player. 
+        //If the player collides with a gamobject tagged bullet, it will Set the 
+        //player back to its spawnpoint and deduct a life. 
         else if (other.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            if(gameObject == CompareTag("Player"))
-            {
-                lifes -= 1;
-            }
+            Respawn();
+            lifes -= 1;
         }
         else if (other.CompareTag("Collectables"))
         {
