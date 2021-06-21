@@ -14,6 +14,11 @@ public class GameManagerBehavior : MonoBehaviour
         SceneManager.LoadScene("MainGame");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     //The main game loop
     public void GameEngine()
     {

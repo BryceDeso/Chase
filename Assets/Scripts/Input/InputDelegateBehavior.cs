@@ -6,9 +6,9 @@ public class InputDelegateBehavior : MonoBehaviour
 {
     public PlayerControls _playerControls;
     [SerializeField]
-    private PlayerMovementBehaviour _playerMovement;
-
     private PlayerBehavior _player;
+
+    private PlayerMovementBehaviour _playerMovement;
 
     private void Awake()
     {
@@ -30,6 +30,7 @@ public class InputDelegateBehavior : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
         _playerControls.Player.Shoot.performed += context => _player.MiddleEmitter.Shoot();
+        _playerControls.Player.Jump.performed += context => _playerMovement.Jump();
     }
 
     void FixedUpdate()

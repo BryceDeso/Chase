@@ -8,7 +8,7 @@ public class StartMenuBehavior : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("BryceTest");
+        SceneManager.LoadScene("MainGameArea");
     }
 
     //If escape key is press quit game.

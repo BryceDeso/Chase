@@ -12,7 +12,11 @@ TagManager:
   - Gun
   - SpreadShot
   - PiercingShot
+  - Floor
+  - PiercingShot
+  - SpreadShot
   - Collectables
+  - WinPlane
   layers:
   - Default
   - TransparentFX
