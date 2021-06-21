@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: EnemyLow_initialShadingGroup1
     second: {fileID: 2100000, guid: e55ad25886523644984272211ae8baf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: df732842dbe01d044a4790cf4662945b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
