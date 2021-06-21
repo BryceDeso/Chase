@@ -8336,7 +8336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564bfa79772c07b43a50b4a93f1b658a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifesRef: {fileID: 618412162}
+  _player: {fileID: 618412162}
+  _playerLostMenu: {fileID: 1257880930}
   Win: {fileID: 619451055}
   gameOver: 0
 --- !u!4 &1691479191
