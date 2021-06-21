@@ -10,6 +10,11 @@ TagManager:
   - Wander
   - Teleporter
   - Gun
+  - Floor
+  - PiercingShot
+  - SpreadShot
+  - Collectables
+  - WinPlane
   layers:
   - Default
   - TransparentFX
