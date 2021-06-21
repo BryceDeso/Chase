@@ -36,6 +36,7 @@ public class GameManagerBehavior : MonoBehaviour
             }
             if(Win.CompletedLevel == true)
             {
+                _player.score = _player.score + 150;
                 Win.CompletedLevel = false;
                 RestartGame();
             }
