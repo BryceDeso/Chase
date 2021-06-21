@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerLostUIBehavior : MonoBehaviour
 {
     [HideInInspector]
-    public bool playerLost;
+    public bool playerLost = false;
 
     [Tooltip("Refernce to the lose menu")]
     [SerializeField]
@@ -21,7 +21,10 @@ public class PlayerLostUIBehavior : MonoBehaviour
 
     public void LoseGame()
     {
-        loseMenu.gameObject.SetActive(true);
+        if(playerLost == true)
+        {
+            loseMenu.gameObject.SetActive(true);
+        }
     }
 
     //If the player lost, and the player hits the Restart button, it will restart the game.
