@@ -25,9 +25,8 @@ public class GameManagerBehavior : MonoBehaviour
     //The main game loop
     public void GameEngine()
     {
-        while(!gameOver)
+        if(!gameOver)
         {
-            lifesRef.lifes = 3;
 
             if(lifesRef.lifes == 0)
             {
@@ -44,8 +43,7 @@ public class GameManagerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameOver = false;
-        lifesRef = GetComponent<PlayerBehavior>(); 
+        gameOver = false; 
     }
 
     // Update is called once per frame
