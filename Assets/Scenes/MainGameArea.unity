@@ -3572,6 +3572,11 @@ PrefabInstance:
       propertyPath: canShootPierce
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 375855638345140268, guid: 37d7187bda19bcf469369e030a8e3295,
+        type: 3}
+      propertyPath: lifes
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 375855638345140269, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3758,10 +3763,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619451054}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &619451057
@@ -8332,6 +8337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifesRef: {fileID: 618412162}
+  Win: {fileID: 619451055}
   gameOver: 0
 --- !u!4 &1691479191
 Transform:

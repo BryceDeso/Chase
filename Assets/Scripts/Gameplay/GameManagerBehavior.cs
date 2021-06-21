@@ -8,6 +8,8 @@ public class GameManagerBehavior : MonoBehaviour
     //A reference to the lifes variable in PlayerBehaviour
     public PlayerBehavior lifesRef;
     private PlayerBehavior _player;
+    [SerializeField]
+    private WinPlaneBehavior Win;
     public bool gameOver;
 
     public void RestartGame()
@@ -31,6 +33,10 @@ public class GameManagerBehavior : MonoBehaviour
             if(lifesRef.lifes == 0 || _player == null)
             {
                 gameOver = true;
+                RestartGame();
+            }
+            if(Win.CompletedLevel == true)
+            {
                 RestartGame();
             }
         }

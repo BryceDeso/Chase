@@ -15,6 +15,7 @@ TagManager:
   - SpreadShot
   - Collectables
   - WinPlane
+  - Bullet
   layers:
   - Default
   - TransparentFX

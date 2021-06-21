@@ -33,7 +33,6 @@ public class EnemyBulletBehaviour : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
