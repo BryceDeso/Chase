@@ -35,6 +35,7 @@ public class GameManagerBehavior : MonoBehaviour
             }
             if(Win.CompletedLevel == true)
             {
+                Win.CompletedLevel = false;
                 RestartGame();
             }
         }
