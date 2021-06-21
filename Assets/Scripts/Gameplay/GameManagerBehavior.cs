@@ -6,17 +6,15 @@ using UnityEngine.SceneManagement;
 public class GameManagerBehavior : MonoBehaviour
 {
     //A reference to the lifes variable in PlayerBehaviour
-    [SerializeField]
+    public PlayerBehavior lifesRef;
     private PlayerBehavior _player;
-    [SerializeField]
-    private PlayerLostUIBehavior _playerLostMenu;
     [SerializeField]
     private WinPlaneBehavior Win;
     public bool gameOver;
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("1");
+        SceneManager.LoadScene("MainGame");
     }
 
     public void QuitGame()
@@ -27,17 +25,17 @@ public class GameManagerBehavior : MonoBehaviour
     //The main game loop
     public void GameEngine()
     {
-        if(!gameOver)
+        while(!gameOver)
         {
-            if(_player.lifes == 0)
+            lifesRef.lifes = 3;
+
+            if(lifesRef.lifes == 0)
             {
-                _playerLostMenu.playerLost = true;
                 gameOver = true;
+                RestartGame();
             }
             if(Win.CompletedLevel == true)
             {
-                Win.CompletedLevel = false;
-                _player.score = _player.score + 150;
                 RestartGame();
             }
         }
@@ -47,6 +45,7 @@ public class GameManagerBehavior : MonoBehaviour
     void Start()
     {
         gameOver = false;
+        lifesRef = GetComponent<PlayerBehavior>(); 
     }
 
     // Update is called once per frame
