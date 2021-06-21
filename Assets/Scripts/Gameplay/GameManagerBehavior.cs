@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerBehavior : MonoBehaviour
 {
-    //A reference to the lifes variable in PlayerBehaviour
+    [Tooltip("Refernce to the menu that shows up when the player pauses")]
+    [SerializeField]
+    private PauseMenuBehavior _pauseMenu;
+    [Tooltip("Refernce to the menu that shows up when the player losses")]
     [SerializeField]
     private PlayerLostUIBehavior _playerLoseMenu;
+    [Tooltip("Refernce to the player.")]
     [SerializeField]
     private PlayerBehavior _player;
+    [Tooltip("Refernce to the plane the player needs to touch to win.")]
     [SerializeField]
     private WinPlaneBehavior Win;
     public bool gameOver;
@@ -24,11 +29,25 @@ public class GameManagerBehavior : MonoBehaviour
         Application.Quit();
     }
 
+    private void PauseGame()
+    {
+        if(_pauseMenu.gamePaused == false)
+        {
+            Time.timeScale = 1;
+        }
+        else if(_pauseMenu.gamePaused == true)
+        {
+            Time.timeScale = 0;
+        }
+    }
+
     //The main game loop
     public void GameEngine()
     {
         if(!gameOver)
         {
+            PauseGame();
+
             if(_player.lifes <= 0)
             {
                 _player.lifes = 0;
