@@ -15,4 +15,12 @@ public class CollectableRotationBehaviour : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 30, 0) * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
