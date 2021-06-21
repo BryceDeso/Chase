@@ -18,7 +18,7 @@ public class PlayerBehavior : MonoBehaviour
     [HideInInspector]
     public int score = 0;
     [HideInInspector]
-    public int lifes = 0;
+    public int lifes = 3;
 
     private bool nearTeleporter = false;
 
