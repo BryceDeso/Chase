@@ -32,7 +32,6 @@ public class PlayerLostUIBehavior : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         playerLost = false;
-
     }
 
     //If the player lost and the Exit button was pressed, it will take the player back to the start menu.

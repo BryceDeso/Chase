@@ -3621,7 +3621,7 @@ PrefabInstance:
     - target: {fileID: 375855638345140270, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
       propertyPath: _jumpForce
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 375855638345140270, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
@@ -8505,6 +8505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564bfa79772c07b43a50b4a93f1b658a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 1224468021}
   _playerLoseMenu: {fileID: 1257880930}
   _player: {fileID: 618412162}
   Win: {fileID: 619451055}
