@@ -10,6 +10,8 @@ TagManager:
   - Wander
   - Teleporter
   - Gun
+  - SpreadShot
+  - PiercingShot
   - Floor
   - PiercingShot
   - SpreadShot

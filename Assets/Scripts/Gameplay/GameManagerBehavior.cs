@@ -7,12 +7,11 @@ public class GameManagerBehavior : MonoBehaviour
 {
     //A reference to the lifes variable in PlayerBehaviour
     public PlayerBehavior lifesRef;
-    private PlayerBehavior _player;
     public bool gameOver;
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MainGame");
     }
 
     public void QuitGame()
@@ -27,8 +26,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             lifesRef.lifes = 3;
 
-
-            if(lifesRef.lifes == 0 || _player == null)
+            if(lifesRef.lifes == 0)
             {
                 gameOver = true;
                 RestartGame();
@@ -39,12 +37,13 @@ public class GameManagerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameOver = false;
+        lifesRef = GetComponent<PlayerBehavior>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        GameEngine();
     }
 }
