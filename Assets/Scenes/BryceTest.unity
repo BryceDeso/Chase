@@ -1817,7 +1817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564bfa79772c07b43a50b4a93f1b658a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifesRef: {fileID: 0}
+  _playerLoseMenu: {fileID: 0}
+  _player: {fileID: 0}
+  Win: {fileID: 0}
   gameOver: 0
 --- !u!4 &1215801193
 Transform:
@@ -2713,7 +2715,7 @@ PrefabInstance:
     - target: {fileID: 375855638345140270, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
       propertyPath: _jumpForce
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 375855638345140273, guid: 37d7187bda19bcf469369e030a8e3295,
         type: 3}
