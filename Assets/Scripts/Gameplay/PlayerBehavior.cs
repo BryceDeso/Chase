@@ -235,6 +235,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         else if (other.CompareTag("Collectables"))
         {
+            other.gameObject.SetActive(false);
             score += 20;
         }
     }
