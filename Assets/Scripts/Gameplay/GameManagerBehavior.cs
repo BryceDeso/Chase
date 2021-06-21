@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManagerBehavior : MonoBehaviour
 {
     //A reference to the lifes variable in PlayerBehaviour
-    public PlayerBehavior lifesRef;
+    [SerializeField]
+    private PlayerLostUIBehavior _playerLoseMenu;
+    [SerializeField]
     private PlayerBehavior _player;
     [SerializeField]
     private WinPlaneBehavior Win;
@@ -27,11 +29,10 @@ public class GameManagerBehavior : MonoBehaviour
     {
         if(!gameOver)
         {
-
-            if(lifesRef.lifes == 0)
+            if(_player.lifes == 0)
             {
+                _playerLoseMenu.playerLost = true;
                 gameOver = true;
-                RestartGame();
             }
             if(Win.CompletedLevel == true)
             {
