@@ -65,7 +65,6 @@ public class EnemyVisionBehaviour : MonoBehaviour
                 //stops the enmey by setting it's speed to zero
                 GetComponent<EnemyMovementBehvaiour>().MovementSpeed = 0;
                 GetComponent<EnemyAttackBehaviour>().Attack();
-                transform.LookAt(Target.transform);
             }
             else
                 //resets the enemy's movement speed
