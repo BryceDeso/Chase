@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerLostUIBehavior : MonoBehaviour
 {
@@ -20,9 +21,13 @@ public class PlayerLostUIBehavior : MonoBehaviour
     [SerializeField]
     private Canvas loseMenu;
 
+    public GameObject FirstSelected;
+    private bool _selected = true;
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        FirstButtonSelected();
         LoseGame();
         ActiveText();
     }
@@ -55,5 +60,19 @@ public class PlayerLostUIBehavior : MonoBehaviour
     private void ActiveText()
     {
         scoreText.text = "Score: " + _player.score.ToString();
+    }
+
+    private void FirstButtonSelected()
+    {
+        int timesSelected = 1;
+        for(int i = 0; i < timesSelected; i++)
+        {
+            if(_selected == true && playerLost == true)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(FirstSelected);
+                _selected = false;
+            }
+        }
     }
 }
