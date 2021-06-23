@@ -92,6 +92,15 @@ public class PlayerBehavior : MonoBehaviour
         PiercingShot();
     }
 
+    private void EnemyReset()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Wander");
+        foreach (GameObject enemy in enemies)
+            GameObject.Destroy(enemy);
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bullets)
+            GameObject.Destroy(bullet);
+    }
     /// <summary>
     /// This gets if the player has pressed the A or D keys and will set the player 
     /// gameobject's rotation to 0 or 180 to simulate turning left or right.
@@ -239,6 +248,7 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag("Bullet"))
         {
             Respawn();
+            EnemyReset();
             lifes -= 1;
         }
         else if (other.CompareTag("Collectables"))
