@@ -8506,6 +8506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseMenu: {fileID: 1224468021}
+  _playerUI: {fileID: 1760902783}
   _playerLoseMenu: {fileID: 1257880930}
   _player: {fileID: 618412162}
   Win: {fileID: 619451055}

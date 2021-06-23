@@ -8,6 +8,9 @@ public class GameManagerBehavior : MonoBehaviour
     [Tooltip("Refernce to the menu that shows up when the player pauses")]
     [SerializeField]
     private PauseMenuBehavior _pauseMenu;
+    [Tooltip("Refernce to the player UI")]
+    [SerializeField]
+    private PlayerUIBehavior _playerUI;
     [Tooltip("Refernce to the menu that shows up when the player losses")]
     [SerializeField]
     private PlayerLostUIBehavior _playerLoseMenu;
@@ -19,6 +22,11 @@ public class GameManagerBehavior : MonoBehaviour
     private WinPlaneBehavior Win;
     public bool gameOver;
 
+    public void DestroyPlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(player);
+    }
     public void RestartGame()
     {
         SceneManager.LoadScene("MainGame");
@@ -50,8 +58,10 @@ public class GameManagerBehavior : MonoBehaviour
 
             if(_player.lifes <= 0)
             {
+                DestroyPlayer();
                 _player.lifes = 0;
                 _playerLoseMenu.playerLost = true;
+                _playerUI.gameObject.SetActive(false);
                 gameOver = true;
             }
             if(Win.CompletedLevel == true)
