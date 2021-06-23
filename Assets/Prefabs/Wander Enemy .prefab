@@ -136,7 +136,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   MovementSpeed: 5
-  RotationSpeed: 5
+  RotationSpeed: 20
 --- !u!114 &997881552094182402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _maxDistance: 10
+  _maxDistance: 15
   _maxAngle: 0.25
 --- !u!114 &3522054556872113804
 MonoBehaviour:
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 8250999762413452362, guid: fca2c0443a2940f4195c7f61524db358, type: 3}
-  _bulletSpeed: 5
+  _bulletSpeed: 10
   TimeBetweenShots: 1
 --- !u!1001 &6184059634289701042
 PrefabInstance:
