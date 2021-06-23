@@ -27,8 +27,10 @@ public class GameManagerBehavior : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Destroy(player);
     }
+
     public void RestartGame()
     {
+        DontDestroyOnLoad(_player);
         SceneManager.LoadScene("MainGameArea");
     }
 
@@ -49,7 +51,7 @@ public class GameManagerBehavior : MonoBehaviour
         }
     }
 
-    public void OnGameWin()
+    public void DestroyEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Wander");
         foreach (GameObject enemy in enemies)
@@ -74,7 +76,7 @@ public class GameManagerBehavior : MonoBehaviour
             }
             if(Win.CompletedLevel == true)
             {
-                OnGameWin();
+                DestroyEnemies();
                 _player.score = _player.score + 150;
                 Win.CompletedLevel = false;
                 RestartGame();
