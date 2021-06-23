@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerLostUIBehavior : MonoBehaviour
 {
     [HideInInspector]
     public bool playerLost = false;
+
+    [SerializeField]
+    private PlayerBehavior _player;
+
+    [SerializeField]
+    private Text scoreText;
 
     [Tooltip("Refernce to the lose menu")]
     [SerializeField]
@@ -17,6 +24,7 @@ public class PlayerLostUIBehavior : MonoBehaviour
     void Update()
     {
         LoseGame();
+        ActiveText();
     }
 
     public void LoseGame()
@@ -42,5 +50,10 @@ public class PlayerLostUIBehavior : MonoBehaviour
             SceneManager.LoadScene(0);
             playerLost = false;
         }
+    }
+       
+    private void ActiveText()
+    {
+        scoreText.text = "Score: " + _player.score.ToString();
     }
 }
