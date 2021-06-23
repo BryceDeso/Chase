@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 517825313}
   - component: {fileID: 517825312}
   m_Layer: 5
-  m_Name: Controls
+  m_Name: Keyboard Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,8 +467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 133, y: 102}
-  m_SizeDelta: {x: 250, y: 200}
+  m_AnchoredPosition: {x: 130, y: 130}
+  m_SizeDelta: {x: 250, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517825312
 MonoBehaviour:
@@ -490,7 +490,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '          Controls:
+  m_Text: 'Keybaord Controls:
 
     A - Move left
 
@@ -512,7 +512,20 @@ MonoBehaviour:
 
     Space - Jump
 
-    Left mouse - shoot'
+    Left mouse - shoot
+
+
+    Gamepad Controls:
+
+    Left
+    stick - Move left or right
+
+    X - Use Door
+
+    A - Jump
+
+    Right trigger
+    - shoot'
 --- !u!222 &517825313
 CanvasRenderer:
   m_ObjectHideFlags: 0
