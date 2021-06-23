@@ -21,7 +21,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("MainGameArea");
     }
 
     public void QuitGame()
@@ -41,6 +41,13 @@ public class GameManagerBehavior : MonoBehaviour
         }
     }
 
+    public void OnGameWin()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Wander");
+        foreach (GameObject enemy in enemies)
+            GameObject.Destroy(enemy);
+    }
+
     //The main game loop
     public void GameEngine()
     {
@@ -53,9 +60,11 @@ public class GameManagerBehavior : MonoBehaviour
                 _player.lifes = 0;
                 _playerLoseMenu.playerLost = true;
                 gameOver = true;
+                Time.timeScale = 0;
             }
             if(Win.CompletedLevel == true)
             {
+                OnGameWin();
                 _player.score = _player.score + 150;
                 Win.CompletedLevel = false;
                 RestartGame();

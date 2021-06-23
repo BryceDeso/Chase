@@ -10,6 +10,8 @@ public class BulletBehavior : MonoBehaviour
     private float _speed;
     [HideInInspector]
     public bool shootPierce = false;
+    [HideInInspector]
+    private PlayerBehavior _player;
 
     public Rigidbody Rigidbody
     {
