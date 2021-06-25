@@ -112,7 +112,7 @@ public class PlayerBehavior : MonoBehaviour
 
         //If the A key was pressed this frame and the player is not turned left, set y rotation 
         //to 180 degrees and set turnedLeft to true.
-        if (keyboard.aKey.wasPressedThisFrame && turnedLeft == false || gamePad.leftStick.left.wasPressedThisFrame && turnedLeft == false)
+        if (keyboard.aKey.wasPressedThisFrame && turnedLeft == false)
         {
             turnedLeft = true;
 
@@ -122,13 +122,33 @@ public class PlayerBehavior : MonoBehaviour
         }
         //If the D key was pressed this frame and the player is not turned right, set y rotation 
         //to 0 degrees and set turnedRight to true.
-        else if (keyboard.dKey.wasPressedThisFrame && turnedRight == false || gamePad.leftStick.right.wasPressedThisFrame && turnedRight == false)
+        else if (keyboard.dKey.wasPressedThisFrame && turnedRight == false)
         {
             turnedRight = true;
 
             _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
 
             turnedLeft = false;
+        }
+
+        if(gamePad != null)
+        {
+            if (gamePad.leftStick.right.wasPressedThisFrame && turnedRight == false)
+            {
+                turnedRight = true;
+
+                _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+
+                turnedLeft = false;
+            }
+            else if (gamePad.leftStick.left.wasPressedThisFrame && turnedLeft == false)
+            {
+                turnedLeft = true;
+
+                _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 180, transform.rotation.z, transform.rotation.w);
+
+                turnedRight = false;
+            }
         }
     }
 
