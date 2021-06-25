@@ -12,7 +12,7 @@ public class SpawnerBehavior : MonoBehaviour
     private GameObject _spawnRef;
     [Tooltip("The amount of time inbetween spawns")]
     [SerializeField]
-    private float TimeInterval;
+    private float _timeInterval;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class SpawnerBehavior : MonoBehaviour
         {
             Instantiate(_spawnRef, transform.position, transform.rotation);
 
-            yield return new WaitForSeconds(TimeInterval);
+            yield return new WaitForSeconds(_timeInterval);
         }
     }
 }

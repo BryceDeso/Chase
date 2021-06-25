@@ -258,6 +258,12 @@ public class PlayerBehavior : MonoBehaviour
             other.gameObject.SetActive(false);
             score += 20;
         }
+        else if (other.CompareTag("WinPlane"))
+        {
+            score += 200;
+            Respawn();
+            EnemyReset();
+        }
     }
 
     private void OnCollisionExit(Collision collision)

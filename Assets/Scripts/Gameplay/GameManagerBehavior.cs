@@ -20,6 +20,12 @@ public class GameManagerBehavior : MonoBehaviour
     [Tooltip("Refernce to the plane the player needs to touch to win.")]
     [SerializeField]
     private WinPlaneBehavior Win;
+    [Tooltip("Refernce for the item spawners")]
+    [SerializeField]
+    public GameObject[] _items;
+    
+    private int current;
+
     public bool gameOver;
 
     public void DestroyPlayer()
@@ -32,6 +38,16 @@ public class GameManagerBehavior : MonoBehaviour
     {
         DontDestroyOnLoad(_player);
         SceneManager.LoadScene("MainGameArea");
+    }
+
+    public void ResetItems()
+    {
+        int i = 11;
+        while (current != i)
+        {
+            _items[current].gameObject.SetActive(true);
+            ++current;
+        }
     }
 
     public void QuitGame()
@@ -76,10 +92,7 @@ public class GameManagerBehavior : MonoBehaviour
             }
             if(Win.CompletedLevel == true)
             {
-                DestroyEnemies();
-                _player.score = _player.score + 150;
-                Win.CompletedLevel = false;
-                RestartGame();
+                ResetItems();
             }
         }
     }
