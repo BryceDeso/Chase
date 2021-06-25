@@ -20,11 +20,9 @@ public class GameManagerBehavior : MonoBehaviour
     [Tooltip("Refernce to the plane the player needs to touch to win.")]
     [SerializeField]
     private WinPlaneBehavior Win;
-    [Tooltip("Refernce for the item spawners")]
+    [Tooltip("Holds a refernce the Spawner Manager")]
     [SerializeField]
-    public GameObject[] _items;
-    
-    private int current;
+    private SpawnerManagerBehavior _SpawnManager;
 
     public bool gameOver;
 
@@ -38,16 +36,6 @@ public class GameManagerBehavior : MonoBehaviour
     {
         DontDestroyOnLoad(_player);
         SceneManager.LoadScene("MainGameArea");
-    }
-
-    public void ResetItems()
-    {
-        int i = 11;
-        while (current != i)
-        {
-            _items[current].gameObject.SetActive(true);
-            ++current;
-        }
     }
 
     public void QuitGame()
@@ -92,7 +80,7 @@ public class GameManagerBehavior : MonoBehaviour
             }
             if(Win.CompletedLevel == true)
             {
-                ResetItems();
+                _SpawnManager.resetSpawnTimers = true;
             }
         }
     }

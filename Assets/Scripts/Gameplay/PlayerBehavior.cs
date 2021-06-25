@@ -133,21 +133,25 @@ public class PlayerBehavior : MonoBehaviour
 
         if(gamePad != null)
         {
-            if (gamePad.leftStick.right.wasPressedThisFrame && turnedRight == false)
-            {
-                turnedRight = true;
-
-                _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
-
-                turnedLeft = false;
-            }
-            else if (gamePad.leftStick.left.wasPressedThisFrame && turnedLeft == false)
+            //If the left stick was moved right this frame and the player is not turned left, set y rotation 
+            //to 180 degrees and set turnedLeft to true.
+            if (gamePad.leftStick.left.wasPressedThisFrame && turnedLeft == false)
             {
                 turnedLeft = true;
 
                 _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 180, transform.rotation.z, transform.rotation.w);
 
                 turnedRight = false;
+            }
+            //If the left stick was moved left this frame and the player is not turned right, set y rotation 
+            //to 0 degrees and set turnedRight to true.
+            else if (gamePad.leftStick.right.wasPressedThisFrame && turnedRight == false)
+            {
+                turnedRight = true;
+
+                _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+
+                turnedLeft = false;
             }
         }
     }

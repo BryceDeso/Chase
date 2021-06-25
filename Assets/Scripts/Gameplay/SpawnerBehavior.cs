@@ -11,13 +11,22 @@ public class SpawnerBehavior : MonoBehaviour
     [SerializeField]
     private GameObject _spawnRef;
     [Tooltip("The amount of time inbetween spawns")]
-    [SerializeField]
-    private float _timeInterval;
+    public float _timeInterval;
+
+    private float _maxTime;
+    //Used to tell how much time is left until the next spawn.
+    public float _timeLeft;
+
+    private void Start()
+    {
+        _maxTime = _timeInterval;
+        Instantiate(_spawnRef, transform.position, transform.rotation);
+    }
 
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        StartCoroutine(SpawnCorutine());
+        Timer();
     }
 
     /// <summary>
@@ -30,6 +39,22 @@ public class SpawnerBehavior : MonoBehaviour
             Instantiate(_spawnRef, transform.position, transform.rotation);
 
             yield return new WaitForSeconds(_timeInterval);
+        }
+    }
+
+    private void Timer()
+    {
+        if(GameOverRef.gameOver != true)
+        {
+            _maxTime -= Time.deltaTime;
+            _timeLeft = _maxTime;
+
+            if (_timeLeft <= 0)
+            {
+                Instantiate(_spawnRef, transform.position, transform.rotation);
+
+                _maxTime = _timeInterval;
+            }
         }
     }
 }
