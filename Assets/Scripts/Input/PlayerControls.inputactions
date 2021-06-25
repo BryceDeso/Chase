@@ -28,12 +28,20 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "159675cd-b281-4770-a624-415cd2f6f8cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
                 {
                     "name": "2D Vector",
-                    "id": "9f01ae40-17d5-4ba0-8d09-9903e4e53f94",
+                    "id": "9fafaa14-2460-4863-94f6-0bf39a4d3da5",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -44,7 +52,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "6f9a6947-cafb-4f49-97a5-60804c7b5f7d",
+                    "id": "c71f09de-b72f-45c4-a72a-d1a8b355a140",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -55,8 +63,41 @@
                 },
                 {
                     "name": "right",
-                    "id": "56262589-1f5e-462f-a62a-9a9e151bdb2e",
+                    "id": "bd26d396-de9f-438c-ac21-8fe1631fab80",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "058b7b0c-4066-4873-b8d4-55b15dee81ef",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "cdcac347-4758-4175-893c-0bc21a871c09",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "cc475484-d315-4e92-b773-63c00c5330f1",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -77,12 +118,56 @@
                 },
                 {
                     "name": "",
-                    "id": "dacd3ad7-e56a-449c-9f51-a9ce8e1023f8",
-                    "path": "<Keyboard>/space",
+                    "id": "0a2b6ac1-fe44-4c10-ae90-b414ca248a96",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseTeleporter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74691f9a-9b57-4eaa-8a97-7a10ee48f70d",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51161b7a-aec8-4295-bf60-0361b6b346b4",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fc702dc-a994-4f74-91e9-7061e5dc214c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ffe7fc8b-24f8-4f7d-bd02-3e65345a99c7",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -93,15 +178,38 @@
             "id": "5e5d367d-3a36-4716-a5cc-144ada129777",
             "actions": [
                 {
-                    "name": "Mouse",
+                    "name": "Pause",
                     "type": "Value",
-                    "id": "22ac0a2f-e551-4036-a24d-a5f1ed886a88",
-                    "expectedControlType": "",
+                    "id": "dab219ac-955d-49e7-8a7c-cfa6a63e1bef",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
             ],
-            "bindings": []
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "74fb09df-5d28-459e-b130-2ef250730742",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67fdcf41-aad5-4591-a24a-69af86b12998",
+                    "path": "<Gamepad>/start",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

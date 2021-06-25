@@ -7,17 +7,27 @@ public class PlayerBehavior : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
-    private PlayerControls _playerControls;
+    //Used to say if a power up has been collected and which one was collected
+    public bool canShootSpread = false;
+    public bool canShootPierce = false;
 
     //Used tell which way the player is facing.
     private bool turnedRight = false;
     private bool turnedLeft = false;
 
-    private bool nearTeleporter;
+    [HideInInspector]
+    public int score = 0;
+    [SerializeField]
+    public int lifes = 3;
+
+    private bool nearTeleporter = false;
 
     private InputDelegateBehavior _delegateBehavior;
 
     private TeleportBehavior _teleporter;
+
+    //Used to tell if the player is in the air or on the ground.
+    public bool onGround;
 
     [Tooltip("How fast the bullet wil move")]
     public float _bulletSpeed;
@@ -44,6 +54,10 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField]
     public float TimeBetweenShots = 0f;
 
+    [Tooltip("A refernce to an empty gameobject, will set the player's position to the gameobject when the player dies.")]
+    [SerializeField]
+    private GameObject _spawnPoint;
+
     [Tooltip("Holds a refernce to the top bullet emitters")]
     public PlayerBulletEmitterBehavior TopEmitter;
     [Tooltip("Holds a refernce to the middle bullet emitters")]
@@ -55,6 +69,7 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _delegateBehavior = GetComponent<InputDelegateBehavior>();
     }
 
     private void Update()
@@ -77,13 +92,23 @@ public class PlayerBehavior : MonoBehaviour
         PiercingShot();
     }
 
+    private void EnemyReset()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Wander");
+        foreach (GameObject enemy in enemies)
+            GameObject.Destroy(enemy);
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bullets)
+            GameObject.Destroy(bullet);
+    }
     /// <summary>
     /// This gets if the player has pressed the A or D keys and will set the player 
     /// gameobject's rotation to 0 or 180 to simulate turning left or right.
     /// </summary>
-    void Update()
+    void PlayerRotate()
     {
         var keyboard = Keyboard.current;
+        var gamePad = Gamepad.current;
 
         //If the A key was pressed this frame and the player is not turned left, set y rotation 
         //to 180 degrees and set turnedLeft to true.
@@ -105,6 +130,30 @@ public class PlayerBehavior : MonoBehaviour
 
             turnedLeft = false;
         }
+
+        if(gamePad != null)
+        {
+            //If the left stick was moved right this frame and the player is not turned left, set y rotation 
+            //to 180 degrees and set turnedLeft to true.
+            if (gamePad.leftStick.left.wasPressedThisFrame && turnedLeft == false)
+            {
+                turnedLeft = true;
+
+                _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 180, transform.rotation.z, transform.rotation.w);
+
+                turnedRight = false;
+            }
+            //If the left stick was moved left this frame and the player is not turned right, set y rotation 
+            //to 0 degrees and set turnedRight to true.
+            else if (gamePad.leftStick.right.wasPressedThisFrame && turnedRight == false)
+            {
+                turnedRight = true;
+
+                _rigidbody.transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+
+                turnedLeft = false;
+            }
+        }
     }
 
     //If the S key is pressed this frame and while nearTelporter is true, will set nearTeleporter
@@ -112,8 +161,9 @@ public class PlayerBehavior : MonoBehaviour
     private void PlayerTeleport()
     {
         var keyboard = Keyboard.current;
+        var gamePad = Gamepad.current;
 
-        if (keyboard.wKey.wasPressedThisFrame && nearTeleporter == true)
+        if (keyboard.wKey.wasPressedThisFrame && nearTeleporter == true || gamePad.buttonWest.wasPressedThisFrame && nearTeleporter == true)
         {
             nearTeleporter = false;
 
@@ -125,7 +175,6 @@ public class PlayerBehavior : MonoBehaviour
                 );
         }
     }
-
 
     /// <summary>
     /// If canShootSpread is true, a timer will activate for the amount of time set by _spreadShotMaxTimer
@@ -184,11 +233,25 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    //Sets the player's position to the spawnpoints position;
+    private void Respawn()
+    {
+        gameObject.transform.position = _spawnPoint.transform.position;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            onGround = true;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // If the player is in the trigger of a game object tagged teleporter, it will set 
         // nearTeleporter to true and get that teleporter's TeleportBehavior.
-        if (other.CompareTag("Teleporter"))
+        if (other.CompareTag("Patrol Point"))
         {
             nearTeleporter = true;
 
@@ -206,10 +269,32 @@ public class PlayerBehavior : MonoBehaviour
             canShootPierce = true;
             _pierceShotTimer = _pierceShotMaxTime;
         }
-        //If the player collides with a gamobject tagged bullet, it will destroy the player. 
+        //If the player collides with a gamobject tagged bullet, it will Set the 
+        //player back to its spawnpoint and deduct a life. 
         else if (other.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
+            Respawn();
+            EnemyReset();
+            lifes -= 1;
+        }
+        else if (other.CompareTag("Collectables"))
+        {
+            other.gameObject.SetActive(false);
+            score += 20;
+        }
+        else if (other.CompareTag("WinPlane"))
+        {
+            score += 200;
+            Respawn();
+            EnemyReset();
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            onGround = false;
         }
     }
 
