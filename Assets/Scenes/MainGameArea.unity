@@ -1276,7 +1276,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 7171340104238497165, guid: 60c99db6f45387e46a7a1f0836cf9f8d,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!1 &233662477
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,7 +2763,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 6460434016196494225, guid: c08036622e889c04f8c0bd85d6391e79,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!1 &486598971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,7 +2957,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 3250712850713660974, guid: a2541396639ddd748869703bd956d00f,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!4 &508193482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2519330831110527215, guid: e9f9e19d235228841a1e332d5d5b08d5,
@@ -5009,7 +5012,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 7171340104238497165, guid: 60c99db6f45387e46a7a1f0836cf9f8d,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!4 &823129828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2519330830756003253, guid: e9f9e19d235228841a1e332d5d5b08d5,
@@ -5062,7 +5066,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 7171340104238497165, guid: 60c99db6f45387e46a7a1f0836cf9f8d,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!4 &884297521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4694448879638015529, guid: c44aeda7600eff04eb62d6ead8cfefa1,
@@ -5886,7 +5891,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 7171340104238497165, guid: 60c99db6f45387e46a7a1f0836cf9f8d,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!4 &1177602115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4357638353256925510, guid: d97478ac724e9434ab890257f7e5265c,
@@ -6293,7 +6299,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 7171340104238497165, guid: 60c99db6f45387e46a7a1f0836cf9f8d,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!1001 &1228550957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8592,7 +8599,7 @@ MonoBehaviour:
   _playerLoseMenu: {fileID: 1257880930}
   _player: {fileID: 618412162}
   Win: {fileID: 619451055}
-  _items: []
+  _SpawnManager: {fileID: 0}
   gameOver: 0
 --- !u!4 &1691479191
 Transform:
@@ -9592,7 +9599,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 7171340104238497165, guid: 60c99db6f45387e46a7a1f0836cf9f8d,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!1 &2014171441
 GameObject:
   m_ObjectHideFlags: 0
@@ -9639,7 +9647,8 @@ MonoBehaviour:
   GameOverRef: {fileID: 1691479190}
   _spawnRef: {fileID: 7171340104238497165, guid: 60c99db6f45387e46a7a1f0836cf9f8d,
     type: 3}
-  _timeInterval: 100
+  _timeInterval: 50
+  _timeLeft: 0
 --- !u!1 &2015128588
 GameObject:
   m_ObjectHideFlags: 0
