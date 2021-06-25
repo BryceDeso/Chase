@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 5764319829988842957}
   - component: {fileID: 1703639949069669486}
   - component: {fileID: 8475421018888834790}
-  - component: {fileID: 794911528356608791}
+  - component: {fileID: 5910032141006175315}
   m_Layer: 0
   m_Name: PiercingShot
-  m_TagString: SpreadShot
+  m_TagString: PiercingShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ Halo:
     serializedVersion: 2
     rgba: 4278780159
   m_Size: 1
---- !u!114 &794911528356608791
+--- !u!114 &5910032141006175315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,6 +133,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3250712850713660974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c6304be3a27ad74faaedb1c267f1511, type: 3}
+  m_Script: {fileID: 11500000, guid: 50d55e5f1eea84b4da1b3df367c8170a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

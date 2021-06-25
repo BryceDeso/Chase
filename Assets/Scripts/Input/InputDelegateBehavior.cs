@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputDelegateBehavior : MonoBehaviour
 {
     public PlayerControls _playerControls;
     [SerializeField]
-    private GunBehavior _gun;
+    private PlayerBehavior _player;
 
     private PlayerMovementBehaviour _playerMovement;
 
@@ -30,8 +29,8 @@ public class InputDelegateBehavior : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
-
-        _playerControls.Player.Shoot.performed += context => _gun.MiddleEmitter.Shoot();
+        _playerControls.Player.Shoot.performed += context => _player.MiddleEmitter.Shoot();
+        _playerControls.Player.Jump.performed += context => _playerMovement.Jump();
     }
 
     void FixedUpdate()

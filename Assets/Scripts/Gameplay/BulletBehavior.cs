@@ -9,7 +9,9 @@ public class BulletBehavior : MonoBehaviour
     [SerializeField]
     private float _speed;
     [HideInInspector]
-    public bool canShootPierce;
+    public bool shootPierce = false;
+    [HideInInspector]
+    private PlayerBehavior _player;
 
     public Rigidbody Rigidbody
     {
@@ -27,16 +29,17 @@ public class BulletBehavior : MonoBehaviour
     /// <summary>
     /// Checks the object that entered the bullets collision radius then checks the objects tags.
     /// </summary>
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }
-        //Checks if the player has collected the piercing shot powerup
-        if(!canShootPierce)
+        else if(other.CompareTag("Wander"))
         {
-            if (other.CompareTag("Enemy"))
+            Destroy(other.gameObject);
+
+            if (!shootPierce)
             {
                 Destroy(gameObject);
             }
