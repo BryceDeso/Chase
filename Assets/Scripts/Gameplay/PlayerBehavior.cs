@@ -74,8 +74,8 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Update()
     {
-        PlayerActions();
         PowerUps();
+        PlayerActions();
     }
 
     //Funtions that holds player behaviors.
