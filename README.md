@@ -35,4 +35,6 @@ Sam Turner - Player/Enemy Textures
 
 Lorenzo Sawyer Jr. - Player/Enemy animations
 
-This is a group project made for the first year of college at Academy of Interactive Entertainment(AIE).
+<br>
+
+This is a group project made for the first year of Academy of Interactive Entertainment(AIE).
