@@ -4,6 +4,10 @@
 
 Chase down the city's most wanted criminal, Ravi. During the great chase, Ravi's goons will try their best to stop you. You better be quick before Ravi escapes swiftly.
 
+### Goal:
+
+Your goal is to chase down the cities most wanted criminal, Ravi. You will need to fight his goons using a mysterious technology that makes your pistol stronger and collecting any money left behind from the mob boss's attempted escape.
+
 ### Controls:
 
 Keyboard Controls:
