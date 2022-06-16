@@ -38,7 +38,3 @@ Samantha Soloman - Enviroment Artist and Level Designer
 Sam Turner - Player/Enemy Textures
 
 Lorenzo Sawyer Jr. - Player/Enemy animations
-
-<br>
-
-This is a group project made for the first year of Academy of Interactive Entertainment(AIE).
