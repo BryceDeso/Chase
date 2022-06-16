@@ -40,3 +40,7 @@ Samantha Soloman - Enviroment Artist and Level Designer
 Sam Turner - Player/Enemy Textures
 
 Lorenzo Sawyer Jr. - Player/Enemy animations
+
+<br>
+
+This project was made for our first year minor production asessment.
